@@ -1,433 +1,467 @@
-/**
- * AUREUM - پورتفولیو فرانت‌اند فوقِ لوکس بهینه‌سازی‌شده برای موبایل
- */
-
-const premiumProducts = [
-    {
-        id: 1,
-        title: "اوروم تایتان پرو (نسخه امپریال)",
-        category: "smartphones",
-        price: "۱۴۵,۰۰۰,۰۰۰",
-        discount: "نسخه شماره‌دار انحصاری",
-        rating: 5,
-        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600",
-        desc: "نهایتِ مهندسی ابزارهای لوکس. مجهز به شاسی تقویت‌شده از تیتانیوم گرید ۵ و آبکاری طلای ۲۴ عیار به ضخامت ۷ میکرون. پنل پشتی با چرم تمساح طبیعی بافت‌دار تزیین شده است تا هر بار لمس آن، حس بی‌بدیل قدرت را تداعی کند.",
-        specs: { "متریال بدنه": "طلای خالص ۲۴ عیار و تیتانیوم زرهی", "پیکربندی هسته": "۱ ترابایت حافظه / ۲۴ گیگابایت رم", "امنیتی": "تراشه رمزنگاری کوانتومی بیومتریک" }
-    },
-    {
-        id: 2,
-        title: "زمان‌سنج هوشمند کرونوس گلد",
-        category: "watches",
-        price: "۹۸,۰۰۰,۰۰۰",
-        discount: "کالکشن اشرافی ۲۰۲۶",
-        rating: 5,
-        image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=600",
-        desc: "تلاقی اصالتِ موتورهای مکانیکی سوئیسی و هوشمندی تکرارناپذیر مانیتورینگ بیومتریک مدرن. قاب دور این شاهکار از طلای ۱۸ عیار رزگلد مات صیقل خورده و بند چرمی آن هنر دست استادکاران فلورانس ایتالیاست.",
-        specs: { "جنس شاسی": "طلا ۱۸ عیار رزگلد با پولیش الماسه", "پوشش نمایشگر": "بلور یاقوت کبود ضد خش", "سنسور انحصاری": "آنالیز آنی پالس‌های قلبی" }
-    },
-    {
-        id: 3,
-        title: "هدست آکوستیک مجستیک ANC",
-        category: "headphones",
-        price: "۵۴,۰۰۰,۰۰۰",
-        discount: "سفارشی استودیو پلاتین",
-        rating: 5,
-        image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&q=80&w=600",
-        desc: "برای کسانی که کمال فرکانس‌های صدا را به شکل یک ارکستر خصوصی می‌طلبند. بالشتک‌های ارگونومیک پوشانده شده از چمر گوسفندی نرم نپا و درایورهای توسعه‌یافته از متریال گران‌بهای برلیوم برای خلوص بی‌نقص فرکانس‌ها.",
-        specs: { "نوع درایور": "۵۰ میلی‌متری مگنتیک سفارشی", "فناوری ایزولاسیون": "Active Noise Cancellation", "مفصل‌ها": "فولاد ضد زنگ با روکش پلاتینیم" }
-    },
-    {
-        id: 4,
-        title: "منبع انرژی والت اکستریم",
-        category: "accessories",
-        price: "۱۸,۵۰۰,۰۰۰",
-        discount: "تعداد محدود",
-        rating: 4,
-        image: "https://images.unsplash.com/photo-1622445262465-2481c4574875?auto=format&fit=crop&q=80&w=600",
-        desc: "پاوربانک خاص با معماری خازن‌های متراکم گرافنی جهت شارژ پایدار و ایمن ابزارهای هوشمند شما بر روی میزهای مدیریت. پوشش بدنه با فینیش مخملی مشکی و رگه‌های طلای برس‌خورده مزین شده است.",
-        specs: { "ظرفیت اسمی": "۳۵,۰۰۰ میلی‌آمپر بر پایه گرافن", "توان خروجی": "۱۴۰ وات پروتکل PD 3.1", "امنیت حرارتی": "سیستم پایش دما مدار" }
-    },
-    {
-        id: 5,
-        title: "داک مغناطیسی هایپرفلاکس",
-        category: "accessories",
-        price: "۱۲,۰۰۰,۰۰۰",
-        discount: "موجود در عمارت",
-        rating: 5,
-        image: "https://images.unsplash.com/photo-1622445262973-ac56bd986872?auto=format&fit=crop&q=80&w=600",
-        desc: "پایه شارژ بی‌سیم مگ‌سیف با جاذبه فوق‌العاده پایدار مغناطیسی. تلفیقی چشم‌نواز از ساختار سنگین برنج سنتی صیقل‌خورده و سطح بالایی از چرم دباغی‌شده توسکانی.",
-        specs: { "استاندارد فرستنده": "نسل دوم پروتکل Qi2", "خروجی بی‌سیم": "۲۵ وات پایدار بدون افت توان", "جنس پایه": "برنج جامد صیقلی" }
-    },
-    {
-        id: 6,
-        title: "اوروم سولیس فولد",
-        category: "smartphones",
-        price: "۲۱۰,۰۰۰,۰۰۰",
-        discount: "شاهکار کلکسیونی",
-        rating: 5,
-        image: "https://images.unsplash.com/photo-1573148195900-7845dcb9b127?auto=format&fit=crop&q=80&w=600",
-        desc: "بی‌نظیرترین دستاورد مهندسی مواد در قرن حاضر. تلفن هوشمندی که مانند یک دیوان چرمی اصیل باز شده و نمایشگر بدون مرز الترا آمولد ۸.۱ اینچی را در برابر چشمان شما می‌گستراند.",
-        specs: { "مکانیزم بازشو": "لولای هیدرولیک طلای مایع", "پنل اصلی": "۸.۱ اینچ اینفینیتی فولد", "حافظه و پردازش": "۳۲ گیگابایت رم DDR5X" }
-    }
-];
-
-let cart = [];
-let wishlistCountValue = 0;
-let displayedProducts = [...premiumProducts];
-
-const elements = {
-    loader: document.getElementById('loader'),
-    productsGrid: document.getElementById('productsGrid'),
-    categories: document.querySelectorAll('.category-card'),
-    searchInput: document.getElementById('searchInput'),
-    mobileSearchInput: document.getElementById('mobileSearchInput'),
-    cartToggleBtn: document.getElementById('cartToggleBtn'),
-    cartCloseBtn: document.getElementById('cartCloseBtn'),
-    cartDrawer: document.getElementById('cartDrawer'),
-    drawerOverlay: document.getElementById('drawerOverlay'),
-    cartItemsContainer: document.getElementById('cartItemsContainer'),
-    cartSubtotal: document.getElementById('cartSubtotal'),
-    cartCount: document.getElementById('cartCount'),
-    wishlistCount: document.getElementById('wishlistCount'),
-    mobileToggle: document.getElementById('mobileToggle'),
-    navMenu: document.getElementById('navMenu'),
-    productModal: document.getElementById('productModal'),
-    modalCloseBtn: document.getElementById('modalCloseBtn'),
-    modalBody: document.getElementById('modalBody'),
-    newsletterForm: document.getElementById('newsletterForm'),
-    checkoutBtn: document.getElementById('checkoutBtn')
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        if(elements.loader) {
-            elements.loader.style.opacity = '0';
-            setTimeout(() => elements.loader.style.display = 'none', 500);
-        }
-    }, 1000);
-
-    renderProducts(displayedProducts);
-});
-
-function renderProducts(productsList) {
-    if (!elements.productsGrid) return;
-    elements.productsGrid.innerHTML = '';
+/* ==========================================================================
+   طراحی سیستم رنگی گرم لوکس و اشتهاآور - فاقد رنگ سفید مطلق
+   ========================================================================== */
+:root {
+    --bg-espresso: #1B120E;     /* قهوه‌ای عمیق اسپرسو - ایجاد حس گرمای محیط */
+    --bg-smoke: #0E0E0E;        /* مشکی دودی سینمایی پس‌زمینه */
+    --accent-caramel: #C08A5B;  /* کاراملی گرم برای دکمه‌ها و جلب توجه */
+    --accent-cream: #F5E6D3;    /* کرم ملایم برای متون اصلی با کنتراست بالا */
+    --accent-gold: #D4AF37;     /* طلایی لوکس مات برای جزئیات وی‌آی‌پی */
+    --text-muted: #A39382;      /* کرم تیره مات برای توضیحات فرعی */
     
-    if (productsList.length === 0) {
-        elements.productsGrid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; color: var(--text-gray); padding: 50px 0;">
-                هیچ اثر فناوری خاصی منطبق با فیلتر شما یافت نشد.
-            </div>`;
-        return;
+    --glass-surface: rgba(27, 18, 14, 0.7);
+    --border-subtle: rgba(192, 138, 91, 0.15);
+    --shadow-premium: 0 30px 60px rgba(0, 0, 0, 0.6);
+    --transition-cinema: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    --font-primary: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ساختار ریست و جهت‌دهی فارسی */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: var(--bg-smoke);
+}
+
+body {
+    background-color: var(--bg-smoke);
+    color: var(--accent-cream);
+    font-family: var(--font-primary);
+    line-height: 1.65;
+    overflow-x: hidden;
+    text-align: right;
+}
+
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.max-width-md { max-width: 800px; }
+.max-width-sm { max-width: 650px; }
+.text-gold { color: var(--accent-gold); }
+.gold-text { color: var(--accent-gold); }
+.mt-24 { margin-top: 24px; }
+
+/* موتور نورپردازی و افکت ذرات شناور سینمایی */
+.cinematic-ambience {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0; left: 0; z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+.warm-glow-orb {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(192, 138, 91, 0.06) 0%, transparent 70%);
+    top: 20%; right: -10%;
+    filter: blur(80px);
+}
+.steam-particle {
+    position: absolute;
+    background: rgba(245, 230, 211, 0.15);
+    border-radius: 50%;
+    filter: blur(4px);
+}
+.particle-1 { width: 80px; height: 80px; top: 70%; left: 10%; animation: floatSteam 12s infinite linear; }
+.particle-2 { width: 120px; height: 120px; top: 40%; right: 15%; animation: floatSteam 18s infinite linear reverse; }
+@keyframes floatSteam {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.2; }
+    50% { transform: translateY(-40px) scale(1.1) rotate(180deg); opacity: 0.4; }
+    100% { transform: translateY(0) scale(1) rotate(360deg); opacity: 0.2; }
+}
+
+/* دکمه‌های پرمیوم و بهینه‌سازی شده سیستم */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: var(--transition-cinema);
+    cursor: pointer;
+    border: none;
+    font-size: 0.95rem;
+}
+.btn-caramel {
+    background: linear-gradient(135deg, var(--accent-caramel), #A06D42);
+    color: var(--bg-smoke);
+    padding: 16px 36px;
+    box-shadow: 0 10px 30px rgba(192, 138, 91, 0.2);
+}
+.btn-caramel:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(192, 138, 91, 0.35);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--accent-cream);
+    border: 1px solid rgba(245, 230, 211, 0.2);
+    padding: 16px 36px;
+}
+.btn-outline:hover {
+    background: rgba(245, 230, 211, 0.04);
+    border-color: var(--accent-caramel);
+    color: var(--accent-caramel);
+    transform: translateY(-2px);
+}
+.btn-gold {
+    background: linear-gradient(135deg, var(--accent-gold), #B5932A);
+    color: var(--bg-smoke);
+    padding: 14px 28px;
+}
+.btn-sm { font-size: 0.85rem; border-radius: 8px; padding: 10px 20px; }
+.btn-full { width: 100%; }
+
+/* هدر لوکس با شیشه معلق مدرن */
+.main-header {
+    position: fixed;
+    top: 0; left: 0; width: 100%; z-index: 1000;
+    background: rgba(14, 14, 14, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(192, 138, 91, 0.1);
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.restaurant-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1;
+}
+.logo-accent { font-size: 1.4rem; font-weight: 900; letter-spacing: 0.05em; color: var(--accent-cream); }
+.logo-sub { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; color: var(--accent-caramel); margin-top: 4px; }
+
+.nav-container {
+    position: fixed;
+    top: 90px; right: -100%;
+    width: 100%; height: calc(100vh - 90px);
+    background: var(--bg-smoke);
+    padding: 40px 24px;
+    transition: var(--transition-cinema);
+}
+.nav-container.active { right: 0; }
+.nav-menu { list-style: none; display: flex; flex-direction: column; gap: 32px; }
+.nav-link { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 1.2rem; transition: var(--transition-cinema); }
+.nav-link:hover, .nav-link.active { color: var(--accent-caramel); padding-right: 6px; }
+
+.menu-hamburger {
+    background: transparent; border: none; cursor: pointer;
+    display: flex; flex-direction: column; gap: 8px;
+}
+.menu-hamburger .line { width: 28px; height: 2px; background-color: var(--accent-caramel); border-radius: 2px; transition: var(--transition-cinema); }
+.menu-hamburger.active .line:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.menu-hamburger.active .line:nth-child(2) { transform: translateY(-5px) rotate(-45deg); }
+.desktop-only { display: none; }
+
+/* بخش هیرو سینمایی باشکوه */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 20px 60px;
+    overflow: hidden;
+}
+.hero-parallax-bg {
+    position: absolute;
+    inset: 0; z-index: -1;
+}
+.hero-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.05);
+    filter: brightness(45%) contrast(105%);
+}
+.hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--bg-smoke) 5%, transparent 60%);
+}
+.hero-contentcontainer { max-width: 700px; margin: 0 auto; text-align: center; }
+.premium-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(192, 138, 91, 0.1);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 16px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-caramel);
+    margin-bottom: 24px;
+}
+.hero-title { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; line-height: 1.25; margin-bottom: 24px; }
+.hero-subtitle { color: var(--text-muted); font-size: clamp(1rem, 2.5vw, 1.25rem); margin-bottom: 40px; }
+.hero-cta-group { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+
+.scroll-indicator {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--text-muted);
+}
+.mouse-wheel {
+    width: 20px; height: 35px; border: 2px solid var(--border-subtle); border-radius: 10px; position: relative;
+}
+.mouse-wheel::before {
+    content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 8px; background-color: var(--accent-caramel); border-radius: 2px;
+    animation: scrollMouse 1.5s infinite;
+}
+@keyframes scrollMouse { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 18px; } }
+
+/* سرفصل‌های هماهنگ ساختار */
+.section-title-wrapper { margin-bottom: 40px; }
+.section-title-wrapper-center { text-align: center; margin-bottom: 48px; }
+.sub-title { font-size: 0.85rem; font-weight: 800; color: var(--accent-caramel); display: block; margin-bottom: 8px; letter-spacing: 0.05em; }
+.main-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; }
+
+/* بخش منو داستانی مبتنی بر تب */
+.menu-section { padding: 100px 0; }
+.menu-tabs {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px;
+    border-bottom: 1px solid rgba(192, 138, 91, 0.1); padding-bottom: 16px;
+}
+.tab-btn {
+    background: transparent; border: none; color: var(--text-muted);
+    padding: 10px 20px; font-family: var(--font-primary); font-size: 0.95rem;
+    font-weight: 700; cursor: pointer; transition: var(--transition-cinema);
+    border-radius: 8px;
+}
+.tab-btn:hover, .tab-btn.active { color: var(--accent-caramel); background: rgba(192, 138, 91, 0.05); }
+
+.tab-content-panel { display: none; }
+.tab-content-panel.active { display: block; animation: fadeInTab 0.5s ease-in-out forwards; }
+@keyframes fadeInTab { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.dishes-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+
+/* کارت‌های غذا با استایل شیشه‌ای لوکس (Glass UI) */
+.glass-glow-card {
+    background: rgba(27, 18, 14, 0.4);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: var(--transition-cinema);
+}
+.glass-glow-card:hover {
+    border-color: var(--accent-caramel);
+    box-shadow: 0 15px 40px rgba(192, 138, 91, 0.15);
+    transform: translateY(-4px);
+}
+.dish-img-box { position: relative; width: 100%; height: 220px; overflow: hidden; }
+.dish-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-cinema); }
+.glass-glow-card:hover .dish-img-box img { transform: scale(1.04); }
+
+.dish-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.dish-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 10px; }
+.dish-header h3 { font-size: 1.25rem; font-weight: 800; color: var(--accent-cream); }
+.dish-price { color: var(--accent-caramel); font-weight: 900; font-size: 1.15rem; white-space: nowrap; }
+.dish-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; flex: 1; }
+.btn-order {
+    background: transparent; border: 1px solid rgba(192, 138, 91, 0.3);
+    color: var(--accent-cream); padding: 12px; border-radius: 12px;
+    font-family: var(--font-primary); font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: var(--transition-cinema);
+}
+.glass-glow-card:hover .btn-order {
+    background: var(--accent-caramel); color: var(--bg-smoke); border-color: var(--accent-caramel);
+}
+
+/* بخش شاهکارهای سرآشپز (کاروسل اختصاصی) */
+.signature-section { padding: 100px 0; background-color: rgba(14, 14, 14, 0.5); }
+.carousel-container { position: relative; overflow: hidden; padding: 20px 4px; }
+.carousel-track { display: flex; gap: 20px; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+.carousel-item {
+    flex: 0 0 280px; background: var(--bg-espresso); border-radius: 24px; overflow: hidden;
+    box-shadow: var(--shadow-premium); position: relative; height: 380px;
+}
+.carousel-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(75%); transition: var(--transition-cinema); }
+.carousel-item:hover img { transform: scale(1.03); filter: brightness(85%); }
+.carousel-info { position: absolute; bottom: 0; right: 0; width: 100%; padding: 24px; background: linear-gradient(to top, rgba(14,14,14,0.95), transparent); }
+.carousel-info h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+.carousel-info p { color: var(--text-muted); font-size: 0.85rem; }
+
+.carousel-nav { display: flex; justify-content: center; gap: 16px; margin-top: 32px; }
+.nav-arrow {
+    width: 50px; height: 50px; border-radius: 50%; background: var(--bg-espresso);
+    border: 1px solid var(--border-subtle); color: var(--accent-cream); cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    transition: var(--transition-cinema);
+}
+.nav-arrow:hover { background: var(--accent-caramel); color: var(--bg-smoke); border-color: var(--accent-caramel); }
+
+/* بخش فلسفه و اصالت آشپزخانه مینو */
+.philosophy-section { padding: 100px 0; }
+.philosophy-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+.philosophy-desc { color: var(--text-muted); margin-bottom: 32px; text-align: justify; }
+.chef-signature-box { display: flex; align-items: center; gap: 16px; }
+.chef-avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent-caramel); }
+.chef-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.chef-signature-box h4 { font-size: 1.05rem; font-weight: 800; }
+.chef-signature-box p { font-size: 0.85rem; color: var(--accent-caramel); }
+
+.visual-wrapper { position: relative; border-radius: 28px; overflow: hidden; height: 320px; box-shadow: var(--shadow-premium); }
+.visual-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.floating-badge-experience {
+    position: absolute; bottom: 24px; right: 24px; left: 24px;
+    background: rgba(27, 18, 14, 0.85); backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-subtle);
+    padding: 16px 24px; border-radius: 16px; display: flex; align-items: center; gap: 16px;
+}
+.floating-badge-experience .num { font-size: 2.2rem; font-weight: 900; color: var(--accent-gold); line-height: 1; }
+.floating-badge-experience .lbl { font-size: 0.85rem; font-weight: 700; color: var(--accent-cream); }
+
+/* فریم پیشرفته رزرواسیون VIP */
+.booking-section { padding: 100px 0; background: radial-gradient(circle at center, #231813 0%, var(--bg-smoke) 70%); }
+.glass-booking-card {
+    background: rgba(14, 14, 14, 0.6); backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-subtle);
+    padding: 32px 20px; border-radius: 32px; box-shadow: var(--shadow-premium);
+}
+.booking-header { text-align: center; margin-bottom: 32px; }
+.booking-header h2 { font-size: 1.8rem; font-weight: 900; margin-top: 6px; margin-bottom: 12px; }
+.booking-header p { color: var(--text-muted); font-size: 0.9rem; }
+
+.form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 0.85rem; font-weight: 700; color: var(--accent-cream); }
+.input-wrapper { position: relative; display: flex; align-items: center; }
+.input-wrapper i { position: absolute; right: 16px; color: var(--accent-caramel); font-size: 1.05rem; pointer-events: none; }
+.input-wrapper input, .input-wrapper select {
+    width: 100%; background: #17100D; border: 1px solid rgba(192, 138, 91, 0.1);
+    padding: 14px 44px 14px 16px; border-radius: 12px; color: var(--accent-cream);
+    font-family: var(--font-primary); font-size: 0.95rem; outline: none;
+    transition: var(--transition-cinema);
+}
+.input-wrapper input:focus, .input-wrapper select:focus {
+    border-color: var(--accent-caramel); background: #231813;
+    box-shadow: 0 0 15px rgba(192, 138, 91, 0.1);
+}
+
+/* بخش نظرات کارشناسان طعم */
+.testimonials-section { padding: 100px 0; }
+.stack-wrapper { position: relative; margin-top: 32px; }
+.testi-card {
+    background: var(--bg-espresso); border: 1px solid var(--border-subtle);
+    padding: 32px 24px; border-radius: 24px; box-shadow: var(--shadow-premium);
+}
+.rating-stars { color: var(--accent-gold); font-size: 0.85rem; margin-bottom: 16px; }
+.testi-text { font-size: 1.05rem; font-style: italic; color: var(--accent-cream); line-height: 1.8; margin-bottom: 20px; }
+.testi-user { font-size: 0.85rem; font-weight: 700; color: var(--accent-caramel); display: block; }
+
+/* بخش موقعیت مکانی ماتریکس */
+.location-section { padding: 100px 0; }
+.location-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+.map-placeholder { height: 300px; border-radius: 28px; overflow: hidden; border: 1px solid var(--border-subtle); }
+.dark-map-ui {
+    width: 100%; height: 100%; background: #130D0B; display: flex;
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px; text-align: center; color: var(--text-muted); gap: 16px;
+}
+.map-pin {
+    font-size: 2.5rem; color: var(--accent-caramel);
+    animation: bouncePin 2s infinite ease-in-out;
+}
+@keyframes bouncePin { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.location-info-side { display: flex; flex-direction: column; justify-content: center; }
+.address-text { font-size: 1.1rem; font-weight: 600; margin-bottom: 24px; display: flex; gap: 12px; align-items: flex-start; }
+.working-hours-box { background: var(--bg-espresso); border-radius: 20px; padding: 24px; margin-bottom: 32px; border: 1px solid var(--border-subtle); }
+.working-hours-box h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 16px; }
+.hours-row { display: flex; justify-content: space-between; font-size: 0.9rem; padding: 8px 0; border-bottom: 1px solid rgba(192, 138, 91, 0.05); }
+.hours-row:last-child { border-bottom: none; }
+
+/* دکمه‌های چسبان و شناور پایین (موبایل بهینه) */
+.sticky-action-bar {
+    position: fixed; bottom: 0; left: 0; width: 100%; height: 65px;
+    display: flex; z-index: 999; box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+}
+.sticky-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    gap: 10px; color: var(--bg-smoke); text-decoration: none; font-weight: 800; font-size: 0.9rem;
+}
+.whatsapp-color { background-color: #25D366; color: #fff; }
+.reserve-color { background-color: var(--accent-caramel); color: var(--bg-smoke); }
+.sticky-lbl { display: inline; }
+
+/* فوتر باشکوه رستوران */
+.luxury-footer { background: #080504; border-top: 1px solid var(--border-subtle); padding: 60px 0 30px; }
+.footer-layout { display: grid; grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(192, 138, 91, 0.05); }
+.footer-brand-column h3 { font-size: 1.6rem; font-weight: 900; color: var(--accent-cream); margin-bottom: 16px; }
+.footer-brand-column p { color: var(--text-muted); font-size: 0.9rem; max-width: 320px; margin-bottom: 20px; }
+.social-medias { display: flex; gap: 16px; }
+.social-medias a { color: var(--accent-caramel); font-size: 1.2rem; transition: var(--transition-cinema); }
+.social-medias a:hover { color: var(--accent-cream); transform: translateY(-3px); }
+
+.footer-links-column h4, .footer-contact-column h4 { font-size: 1.05rem; font-weight: 800; color: var(--accent-caramel); margin-bottom: 20px; }
+.footer-links-column ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-links-column a { text-decoration: none; color: var(--accent-cream); font-size: 0.9rem; transition: var(--transition-cinema); }
+.footer-links-column a:hover { color: var(--accent-caramel); padding-right: 4px; }
+.footer-contact-column p { font-size: 0.9rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+
+.footer-bottom { padding-top: 24px; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+
+/* کلاس انیمیشن آشکارسازی اسکرول */
+.scroll-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+
+/* ==========================================================================
+   مدیریت رسپانسیو کاملاً بهینه‌سازی شده برای تمام ابعاد و پلتفرم‌ها
+   ========================================================================== */
+@media (min-width: 425px) {
+    .hero-cta-group { flex-direction: row; }
+    .hero-cta-group .btn { flex: 1; }
+}
+
+@media (min-width: 768px) {
+    body { padding-bottom: 0; } /* حذف فضای خالی پایین در دسکتاپ */
+    .sticky-action-bar {
+        position: fixed; bottom: 30px; left: 30px; width: auto; height: auto;
+        flex-direction: column; gap: 12px; background: transparent; box-shadow: none;
     }
-
-    productsList.forEach(product => {
-        const stars = Array(5).fill('').map((_, idx) => 
-            `<i class="${idx < product.rating ? 'fas' : 'far'} fa-star"></i>`
-        ).join('');
-
-        const badgeHTML = product.discount ? `<span class="badge-discount">${product.discount}</span>` : '';
-
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-            <div class="product-image-box">
-                ${badgeHTML}
-                <img src="${product.image}" alt="${product.title}" loading="lazy">
-                <div class="product-overlay-actions">
-                    <div class="action-btn quick-view-btn" data-id="${product.id}"><i class="fas fa-eye"></i></div>
-                    <div class="action-btn fav-btn"><i class="far fa-heart"></i></div>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">${product.title}</h3>
-                <div class="product-rating">${stars}</div>
-                <div class="product-price-row">
-                    <span class="product-price">${product.price} تومان</span>
-                    <button class="btn-add-cart" data-id="${product.id}">تصاحب اثر</button>
-                </div>
-            </div>
-        `;
-        elements.productsGrid.appendChild(card);
-    });
-
-    bindCardEvents();
-}
-
-function bindCardEvents() {
-    document.querySelectorAll('.btn-add-cart').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const id = parseInt(e.target.getAttribute('data-id'));
-            addToCart(id);
-        });
-    });
-
-    document.querySelectorAll('.quick-view-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const currentTarget = e.target.closest('.quick-view-btn');
-            const id = parseInt(currentTarget.getAttribute('data-id'));
-            showProductModalDetails(id);
-        });
-    });
-
-    document.querySelectorAll('.fav-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const heartIcon = e.target.closest('.fav-btn').querySelector('i');
-            if(heartIcon.classList.contains('far')) {
-                heartIcon.className = 'fas fa-heart';
-                heartIcon.style.color = 'var(--primary-gold)';
-                wishlistCountValue++;
-            } else {
-                heartIcon.className = 'far fa-heart';
-                heartIcon.style.color = '';
-                wishlistCountValue--;
-            }
-            if(elements.wishlistCount) elements.wishlistCount.textContent = wishlistCountValue;
-        });
-    });
-}
-
-elements.categories.forEach(tab => {
-    tab.addEventListener('click', () => {
-        elements.categories.forEach(c => c.classList.remove('active'));
-        tab.classList.add('active');
-
-        const cat = tab.getAttribute('data-category');
-        displayedProducts = cat === 'all' ? [...premiumProducts] : premiumProducts.filter(p => p.category === cat);
-        renderProducts(displayedProducts);
-    });
-});
-
-// همگام‌سازی تابع سرچ برای هر دو نسخه اینپوت دسکتاپ و موبایل
-const handleSearch = (e) => {
-    const value = e.target.value.toLowerCase().trim();
-    const activeCat = document.querySelector('.category-card.active').getAttribute('data-category');
-    
-    let targetScope = premiumProducts;
-    if(activeCat !== 'all') {
-        targetScope = premiumProducts.filter(p => p.category === activeCat);
+    .sticky-btn {
+        width: 55px; height: 55px; border-radius: 50%; box-shadow: var(--shadow-premium);
     }
+    .sticky-lbl { display: none; } /* پنهان کردن متن و نمایش آیکونی در دسکتاپ */
+    .whatsapp-color { color: #fff; }
 
-    const filtered = targetScope.filter(p => 
-        p.title.toLowerCase().includes(value) || 
-        p.desc.toLowerCase().includes(value)
-    );
-    renderProducts(filtered);
-};
+    .desktop-only { display: inline-flex; }
+    .menu-hamburger { display: none; }
+    .nav-container { position: static; width: auto; height: auto; background: transparent; padding: 0; }
+    .nav-menu { flex-direction: row; gap: 24px; }
+    .nav-link { font-size: 0.95rem; }
+    .nav-link:hover, .nav-link.active { padding-right: 0; border-bottom: 1px solid var(--accent-caramel); }
 
-if(elements.searchInput) elements.searchInput.addEventListener('input', handleSearch);
-if(elements.mobileSearchInput) elements.mobileSearchInput.addEventListener('input', handleSearch);
-
-function addToCart(prodId, count = 1) {
-    const foundIdx = cart.findIndex(c => c.id === prodId);
-    if(foundIdx > -1) {
-        cart[foundIdx].qty += count;
-    } else {
-        const originalItem = premiumProducts.find(p => p.id === prodId);
-        cart.push({ ...originalItem, qty: count });
-    }
-    syncCartUI();
-    toggleCartDrawer(true);
+    .hero-cta-group .btn { flex: initial; }
+    .dishes-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .carousel-item { flex: 0 0 340px; height: 420px; }
+    .philosophy-grid { grid-template-columns: 1.1fr 0.9fr; gap: 48px; }
+    .visual-wrapper { height: 400px; }
+    .form-grid { grid-template-columns: repeat(2, 1fr); }
+    .full-width { grid-column: span 2; }
+    .location-grid { grid-template-columns: 1.1fr 0.9fr; gap: 48px; }
+    .map-placeholder { height: auto; min-height: 380px; }
+    .footer-layout { grid-template-columns: 1.5fr 1fr 1fr; }
 }
 
-function syncCartUI() {
-    if(!elements.cartItemsContainer) return;
-    elements.cartItemsContainer.innerHTML = '';
-    let totalSarmaye = 0;
-    let itemsCount = 0;
-
-    cart.forEach(item => {
-        const purePriceNum = parseInt(item.price.replace(/,/g, ''));
-        totalSarmaye += (purePriceNum * item.qty);
-        itemsCount += item.qty;
-
-        const cartRow = document.createElement('div');
-        cartRow.className = 'cart-item';
-        cartRow.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" class="cart-item-img">
-            <div class="cart-item-details">
-                <h4 class="cart-item-title">${item.title}</h4>
-                <div class="cart-item-price">${(purePriceNum * item.qty).toLocaleString('fa-IR')} تومان</div>
-                <div class="cart-item-ctrl">
-                    <div class="ctrl-btn dec-item" data-id="${item.id}"><i class="fas fa-minus"></i></div>
-                    <span style="font-weight:700;">${item.qty}</span>
-                    <div class="ctrl-btn inc-item" data-id="${item.id}"><i class="fas fa-plus"></i></div>
-                </div>
-            </div>
-            <i class="far fa-trash-alt cart-item-remove" data-id="${item.id}"></i>
-        `;
-        elements.cartItemsContainer.appendChild(cartRow);
-    });
-
-    if(elements.cartSubtotal) elements.cartSubtotal.textContent = `${totalSarmaye.toLocaleString('fa-IR')} تومان`;
-    if(elements.cartCount) elements.cartCount.textContent = itemsCount;
-
-    bindCartModifiers();
-}
-
-function bindCartModifiers() {
-    document.querySelectorAll('.inc-item').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const id = parseInt(e.target.closest('.inc-item').getAttribute('data-id'));
-            const target = cart.find(c => c.id === id);
-            target.qty++;
-            syncCartUI();
-        });
-    });
-
-    document.querySelectorAll('.dec-item').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const id = parseInt(e.target.closest('.dec-item').getAttribute('data-id'));
-            const target = cart.find(c => c.id === id);
-            if(target.qty > 1) {
-                target.qty--;
-            } else {
-                cart = cart.filter(c => c.id !== id);
-            }
-            syncCartUI();
-        });
-    });
-
-    document.querySelectorAll('.cart-item-remove').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const id = parseInt(e.target.getAttribute('data-id'));
-            cart = cart.filter(c => c.id !== id);
-            syncCartUI();
-        });
-    });
-}
-
-function toggleCartDrawer(open) {
-    if(open) {
-        elements.cartDrawer.classList.add('active');
-        elements.drawerOverlay.classList.add('active');
-    } else {
-        elements.cartDrawer.classList.remove('active');
-        elements.drawerOverlay.classList.remove('active');
-    }
-}
-
-if(elements.cartToggleBtn) elements.cartToggleBtn.addEventListener('click', () => toggleCartDrawer(true));
-if(elements.cartCloseBtn) elements.cartCloseBtn.addEventListener('click', () => toggleCartDrawer(false));
-if(elements.drawerOverlay) elements.drawerOverlay.addEventListener('click', () => toggleCartDrawer(false));
-
-function showProductModalDetails(id) {
-    const item = premiumProducts.find(p => p.id === id);
-    if(!item || !elements.modalBody) return;
-
-    let specRowsHtml = '';
-    for(const [sKey, sVal] of Object.entries(item.specs)) {
-        specRowsHtml += `<div class="specs-item"><span>${sKey}</span><span>${sVal}</span></div>`;
-    }
-
-    elements.modalBody.innerHTML = `
-        <div class="modal-gallery">
-            <div class="main-modal-img">
-                <img src="${item.image}" alt="${item.title}" id="modalMainImage">
-            </div>
-            <div class="thumb-gallery">
-                <img src="${item.image}" class="thumb-img active" alt="نمای اصلی">
-                <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&q=80&w=200" class="thumb-img" alt="زاویه مهندسی">
-            </div>
-        </div>
-        <div>
-            <h2 class="modal-info-title">${item.title}</h2>
-            <div class="modal-info-price">${item.price} تومان</div>
-            <p class="modal-info-desc">${item.desc}</p>
-            
-            <div class="specs-list">
-                <h4 style="margin-bottom: 12px; color: var(--primary-gold); font-size:1rem;">شناسنامه متریال و گرید ساختار</h4>
-                ${specRowsHtml}
-            </div>
-
-            <div class="qty-row">
-                <div class="qty-selector">
-                    <div class="ctrl-btn" id="modalMinus"><i class="fas fa-minus"></i></div>
-                    <input type="text" class="qty-input" id="modalQty" value="1" readonly>
-                    <div class="ctrl-btn" id="modalPlus"><i class="fas fa-plus"></i></div>
-                </div>
-                <button class="btn btn-primary" id="modalAddToCart" data-id="${item.id}">درخواست تملک شاهکار</button>
-            </div>
-        </div>
-        <div class="reviews-section">
-            <h3 class="reviews-header">گواهی و بازخورد کلکسیونرهای رسمی</h3>
-            <div class="review-card">
-                <div class="review-meta">
-                    <span class="reviewer-name">مهندس سهراب راد</span>
-                    <span style="color: var(--primary-gold); font-size: 0.8rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
-                </div>
-                <p class="review-text">"کیفیت پرداخت و جزییات پولیش الماس روی لبه‌های شاسی حیرت‌انگیز است."</p>
-            </div>
-        </div>
-    `;
-
-    const modalQtyInput = document.getElementById('modalQty');
-    document.getElementById('modalPlus').addEventListener('click', () => {
-        modalQtyInput.value = parseInt(modalQtyInput.value) + 1;
-    });
-    document.getElementById('modalMinus').addEventListener('click', () => {
-        let cv = parseInt(modalQtyInput.value);
-        if(cv > 1) modalQtyInput.value = cv - 1;
-    });
-
-    document.getElementById('modalAddToCart').addEventListener('click', () => {
-        addToCart(item.id, parseInt(modalQtyInput.value));
-        elements.productModal.classList.remove('active');
-    });
-
-    document.querySelectorAll('.thumb-img').forEach(thumb => {
-        thumb.addEventListener('click', (e) => {
-            document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-            e.target.classList.add('active');
-            document.getElementById('modalMainImage').src = e.target.src;
-        });
-    });
-
-    elements.productModal.classList.add('active');
-}
-
-if(elements.modalCloseBtn) {
-    elements.modalCloseBtn.addEventListener('click', () => elements.productModal.classList.remove('active'));
-}
-if(elements.productModal) {
-    elements.productModal.addEventListener('click', (e) => { if(e.target === elements.productModal) elements.productModal.classList.remove('active'); });
-}
-
-if(elements.mobileToggle && elements.navMenu) {
-    elements.mobileToggle.addEventListener('click', () => {
-        elements.navMenu.classList.toggle('active');
-        const icon = elements.mobileToggle.querySelector('i');
-        icon.className = elements.navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
-    });
-}
-
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-        document.querySelectorAll('.nav-link').forEach(nl => nl.classList.remove('active'));
-        e.target.classList.add('active');
-        if(elements.navMenu) elements.navMenu.classList.remove('active');
-        if(elements.mobileToggle) elements.mobileToggle.querySelector('i').className = 'fas fa-bars';
-    });
-});
-
-if(elements.newsletterForm) {
-    elements.newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const mail = elements.newsletterForm.querySelector('input').value;
-        alert(`دعوت‌نامه با موفقیت به آدرس ایمیل ${mail} ارسال شد.`);
-        elements.newsletterForm.querySelector('input').value = '';
-    });
-}
-
-if(elements.checkoutBtn) {
-    elements.checkoutBtn.addEventListener('click', () => {
-        if(cart.length === 0) {
-            alert("صندوق جاری شما خالی است.");
-            return;
-        }
-        alert("در حال اتصال امن به درگاه پرداخت شتاب...");
-        cart = [];
-        syncCartUI();
-        toggleCartDrawer(false);
-    });
+@media (min-width: 1024px) {
+    .nav-menu { gap: 36px; }
+    .dishes-grid { grid-template-columns: repeat(3, 1fr); }
+    .carousel-item { flex: 0 0 380px; height: 460px; }
 }
