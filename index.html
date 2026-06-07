@@ -1,206 +1,209 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="تجربه رستوران لوکس میشلن - هنر آشپزی مدرن و طعم‌های خاص" />
-  <title>نُوار کلینری | تجربه غذای لوکس</title>
-
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عمارت نیل | طعم اصیل در بستری مدرن</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- دکمه‌های شناور -->
-  <div class="floating-ui">
-    <button class="floating-btn reserve">رزرو میز</button>
-    <button class="floating-btn whatsapp">سفارش واتساپ</button>
-  </div>
-
-  <!-- هدر سینمایی -->
-  <header class="hero">
-
-    <div class="hero-overlay"></div>
-
-    <nav class="nav">
-      <div class="logo">نُوار <span>کلینری</span></div>
-
-      <ul class="nav-links">
-        <li>منو</li>
-        <li>تجربه</li>
-        <li>سرآشپز</li>
-        <li>موقعیت</li>
-      </ul>
-    </nav>
-
-    <div class="hero-content">
-      <h1 class="hero-title">طعم را همان‌طور که تا حالا ندیده‌ای تجربه کن</h1>
-
-      <p class="hero-subtitle">
-        تجربه‌ای لوکس از آشپزی مدرن، احساس، هنر و طعم‌های فراموش‌نشدنی
-      </p>
-
-      <div class="hero-cta">
-        <button class="btn primary">مشاهده منو</button>
-        <button class="btn secondary">رزرو میز</button>
-      </div>
+    <!-- لایه هاله‌های نوری شناور سینمایی در پس‌زمینه -->
+    <div class="cinematic-bg">
+        <div class="ambient-glow orb-gold"></div>
+        <div class="ambient-glow orb-orange"></div>
     </div>
 
-    <div class="floating-particles"></div>
-  </header>
+    <!-- دکمه شناور لوکس رزرو سریع (دسترس‌پذیری سریع دسکتاپ و موبایل) -->
+    <a href="#reserve-section" class="floating-reserve-trigger" aria-label="رزرو آنلاین صندلی">
+        <i class="fa-solid fa-chair"></i>
+    </a>
 
-  <!-- منو -->
-  <section class="menu-section">
+    <!-- بخش اول: هیرو حسی و سینمایی -->
+    <section class="cinematic-hero">
+        <div class="hero-media-layer">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1200" alt="استیک ریب‌آی دوقلو" class="hero-parallax-img">
+            <div class="hero-vignette"></div>
+        </div>
+        
+        <div class="hero-text-block">
+            <div class="michelin-badge">
+                <i class="fa-solid fa-award"></i> <span>MICHELIN GUIDE 2026</span>
+            </div>
+            <h1 class="hero-headline">شکار طعم‌ها؛ <br>در تلاقی <span class="text-orange">آتش و اصالت</span></h1>
+            <p class="hero-subline">معماری نوین خوراک با متدهای گریل ارگانیک و مواد اولیه دست‌چین شده.</p>
+            <div class="hero-buttons">
+                <a href="#menu-section" class="btn-main-gold">کشف منوی امشب</a>
+                <a href="#reserve-section" class="btn-outline-cream">رزرو میز VIP</a>
+            </div>
+        </div>
+    </section>
 
-    <div class="section-header">
-      <h2>منوی ویژه</h2>
-      <p>طراحی شده با وسواس، احساس و بهترین مواد اولیه جهان</p>
+    <!-- بخش دوم و سوم: منوی تعاملی و کارت‌های شیشه‌ای شکوهمند -->
+    <section id="menu-section" class="menu-story-wrapper scroll-reveal">
+        <div class="section-heading">
+            <span class="lbl-tag">// داستان خلقت طعم</span>
+            <h2 class="title-main">شاهکارهای گزینش‌شده</h2>
+        </div>
+
+        <!-- فیلتر مینی‌مال دسته‌بندی‌ها -->
+        <div class="interactive-categories">
+            <button class="category-pill active" data-cat="all">همه دسته‌ها</button>
+            <button class="category-pill" data-cat="signature">امضای سرآشپز</button>
+            <button class="category-pill" data-cat="grill">گریل و آتش</button>
+            <button class="category-pill" data-cat="dessert">دسر و نوشیدنی</button>
+        </div>
+
+        <!-- گرید کارت‌های شیشه‌ای با افکت درخشش نئونی گرم -->
+        <div class="glass-dishes-grid">
+            
+            <!-- آیتم اول -->
+            <article class="glass-dish-card" data-category="signature">
+                <div class="card-glow-layer"></div>
+                <div class="dish-image">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=600" alt="فیله مدالیون">
+                    <span class="badge-hot"><i class="fa-solid fa-fire"></i> محبوب</span>
+                </div>
+                <div class="dish-info">
+                    <div class="dish-title-row">
+                        <h3>فیله مدالیون با سس انار دودی</h3>
+                        <span class="dish-price">۶۸۰,۰۰۰</span>
+                    </div>
+                    <p class="dish-summary">گوشت مغز راسته گوساله، پوره چغندر وحشی، به همراه کاهش سس انار جنگلی گیلان.</p>
+                    <button class="btn-instant-order">سفارش آنی <i class="fa-solid fa-plus"></i></button>
+                </div>
+            </article>
+
+            <!-- آیتم دوم -->
+            <article class="glass-dish-card" data-category="grill">
+                <div class="card-glow-layer"></div>
+                <div class="dish-image">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=600" alt="شاه میگو گریل">
+                </div>
+                <div class="dish-info">
+                    <div class="dish-title-row">
+                        <h3>شاه‌میگوی دریای جنوب تنوری</h3>
+                        <span class="dish-price">۹۴۰,۰۰۰</span>
+                    </div>
+                    <p class="dish-summary">دوقلو شاه‌میگوی صید روز، مرینیت شده با کره لیمو و زعفران ارگانیک کوهستان.</p>
+                    <button class="btn-instant-order">سفارش آنی <i class="fa-solid fa-plus"></i></button>
+                </div>
+            </article>
+
+            <!-- آیتم سوم -->
+            <article class="glass-dish-card" data-category="dessert">
+                <div class="card-glow-layer"></div>
+                <div class="dish-image">
+                    <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&q=80&w=600" alt="تارت میوه">
+                </div>
+                <div class="dish-info">
+                    <div class="dish-title-row">
+                        <h3>تارت کارامل نمکی و آووکادو</h3>
+                        <span class="dish-price">۲۱۰,۰۰۰</span>
+                    </div>
+                    <p class="dish-summary">پایه بیسکویت دست‌ساز، کرم آووکادوی استوایی، دانه بلوبری و سس توفی کاراملی داغ.</p>
+                    <button class="btn-instant-order">سفارش آنی <i class="fa-solid fa-plus"></i></button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- بخش چهارم: فلسفه سرآشپز (روایت‌گری داستانی) -->
+    <section class="chef-philosophy scroll-reveal">
+        <div class="philosophy-container">
+            <div class="philosophy-visuals">
+                <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&q=80&w=600" alt="هنر آشپزی">
+                <div class="experience-badge-clean">
+                    <span class="number">۲۰۲۶</span>
+                    <span class="txt">استاندارد نوین فود دیزاین</span>
+                </div>
+            </div>
+            <div class="philosophy-text">
+                <span class="lbl-tag">// اصالت مینو</span>
+                <h2 class="title-main">طعم، هندسه‌ای از خاطرات است</h2>
+                <p class="paragraph-desc">
+                    در عمارت نیل، هر بشقاب یک بوم نقاشی است و هر طعم، فرکانسی برای بیدار کردن خاطرات کهن. ما اصالت آشپزی ایرانی را با تکنیک‌های مدرن مولکولی ترکیب کرده‌ایم تا تجربه‌ای خلق کنیم که فراتر از صرفاً یک وعده غذایی باشد. کیفیت مواد اولیه ما بدون واسطه از مزرعه تضمین می‌شود.
+                </p>
+                <div class="chef-signature">
+                    <h4>استاد رادان شایان</h4>
+                    <p>معمار طعم و بنیان‌گذار عمارت نیل</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش پنجم: فرم رزرو مینی‌مال لوکس -->
+    <section id="reserve-section" class="reserve-wrapper scroll-reveal">
+        <div class="glass-form-container">
+            <div class="form-header-center">
+                <h2>میزبانی از حضور ارزشمند شما</h2>
+                <p>جهت حضور در سالن اصلی یا پنت‌هاوس وی‌آی‌پـی، فرم زیر را تکمیل فرمایید.</p>
+            </div>
+            
+            <form id="luxuryForm" class="native-luxury-form">
+                <div class="fields-stack">
+                    <div class="input-row-group">
+                        <input type="text" id="cust-name" placeholder="نام و نام خانوادگی" required>
+                        <input type="tel" id="cust-phone" placeholder="تلفن همراه مستقیم" required>
+                    </div>
+                    <div class="input-row-group">
+                        <input type="date" id="cust-date" required>
+                        <select id="cust-count" required>
+                            <option value="">تعداد میهمانان</option>
+                            <option value="1">۱ نفر (انفرادی)</option>
+                            <option value="2">۲ نفر (میز دونفره)</option>
+                            <option value="4">۴ الی ۶ نفر (خانوادگی)</option>
+                            <option value="vip">جلسه کاری VIP</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit-gold-action">درخواست رزرواسیون قطعی صندلی</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- بخش ششم: دیدگاه کارشناسان و میهمانان با انیمیشن نرم -->
+    <section class="reviews-section scroll-reveal">
+        <div class="max-width-container-sm">
+            <div class="review-animated-card">
+                <div class="stars-row"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p class="review-quote">"طعم فیله مدالیون اینجا پدیده‌ای بود که تا به حال تجربه نکرده بودم. اتمسفر تاریک و لوکس رستوران نیل در کنار نورپردازی دقیق روی غذاها، استانداردی کاملاً بین‌المللی دارد."</p>
+                <span class="review-author">دکتر سمیرا راد - منتقد بین‌المللی فود گاید</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش هفتم: آدرس و موقعیت مینی‌مال خطی -->
+    <section class="location-clean-section scroll-reveal">
+        <div class="location-container-grid">
+            <div class="info-address-box">
+                <span class="lbl-tag">// دسترسی رسمی</span>
+                <h2>عمارت مجلل نیل</h2>
+                <p class="geo-text"><i class="fa-solid fa-location-dot text-orange"></i> تهران، فرشته، خیابان فیاضی، پلاک ۱۱۰</p>
+                <div class="timings-box">
+                    <p><strong>شنبه تا چهارشنبه:</strong> ۱۲:۳۰ الی ۲۴:۰۰</p>
+                    <p><strong>پنجشنبه و جمعه:</strong> ۱۳:۰۰ الی ۰۱:۰۰ بامداد</p>
+                </div>
+            </div>
+            <div class="dark-map-placeholder">
+                <div class="pulsing-pin"><i class="fa-solid fa-circle-dot"></i></div>
+                <p class="map-label-txt">نمای ژئوکد شده تایید شده عمارت نیل در پلتفرم نقشه</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش هشتم: نوار اقدام چسبان پایین مخصوص موبایل (Sticky Mobile CTA Bar) -->
+    <div class="mobile-sticky-action-bar">
+        <a href="https://wa.me/#" target="_blank" rel="noopener noreferrer" class="sticky-link-item link-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i> <span>سفارش سریع</span>
+        </a>
+        <a href="#reserve-section" class="sticky-link-item link-reserve">
+            <i class="fa-solid fa-calendar-check"></i> <span>رزرو آنی صندلی</span>
+        </a>
     </div>
 
-    <div class="menu-tabs">
-      <button class="tab active">صبحانه</button>
-      <button class="tab">ناهار</button>
-      <button class="tab">شام</button>
-      <button class="tab">نوشیدنی</button>
-    </div>
-
-    <div class="menu-grid">
-
-      <div class="food-card">
-        <div class="food-img"></div>
-        <h3>تخم‌مرغ ترافل ابری</h3>
-        <p>بافت نرم تخم‌مرغ با عطر ترافل سیاه لوکس</p>
-        <div class="price">۲۸€</div>
-        <button>سفارش</button>
-      </div>
-
-      <div class="food-card">
-        <div class="food-img"></div>
-        <h3>استیک طلایی واگیو</h3>
-        <p>گوشت واگیو با لایه‌ای از کارامل طلایی</p>
-        <div class="price">۶۵€</div>
-        <button>سفارش</button>
-      </div>
-
-      <div class="food-card">
-        <div class="food-img"></div>
-        <h3>دسر شکلات ولوت</h3>
-        <p>شکلات داغ با کرم وانیل دودی</p>
-        <div class="price">۲۲€</div>
-        <button>سفارش</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- فلسفه آشپز -->
-  <section class="experience">
-
-    <div class="experience-content">
-      <h2>فلسفه سرآشپز</h2>
-
-      <p>
-        هر غذا یک داستان است؛ ترکیبی از احساس، دقت و وسواس در کمال.
-        ما فقط غذا سرو نمی‌کنیم — ما خاطره خلق می‌کنیم.
-      </p>
-    </div>
-  </section>
-
-  <!-- شاهکارهای ویژه -->
-  <section class="signature">
-
-    <h2>شاهکارهای سرآشپز</h2>
-
-    <div class="carousel">
-      <div class="carousel-item">واگیو آتشین سلطنتی</div>
-      <div class="carousel-item">سوشی طلایی اقیانوس</div>
-      <div class="carousel-item">دسر مراسم نیمه‌شب</div>
-    </div>
-
-  </section>
-
-  <!-- رزرو -->
-  <section class="reservation">
-
-    <h2>رزرو میز</h2>
-
-    <form>
-      <input type="text" placeholder="نام کامل" required />
-      <input type="tel" placeholder="شماره تماس" required />
-      <input type="date" required />
-      <input type="time" required />
-      <input type="number" placeholder="تعداد مهمان" required />
-
-      <button type="submit">تأیید رزرو</button>
-    </form>
-
-  </section>
-
-  <!-- نظرات -->
-  <section class="testimonials">
-
-    <h2>نظر مشتریان</h2>
-
-    <div class="testimonial-grid">
-
-      <div class="testimonial">
-        <p>"لوکس‌ترین تجربه غذایی زندگی من بود."</p>
-        <span>★★★★★</span>
-      </div>
-
-      <div class="testimonial">
-        <p>"هر غذا مثل یک اثر هنری بود."</p>
-        <span>★★★★★</span>
-      </div>
-
-      <div class="testimonial">
-        <p>"کاملاً بی‌نقص و فراموش‌نشدنی."</p>
-        <span>★★★★★</span>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- لوکیشن -->
-  <section class="location">
-
-    <h2>موقعیت ما</h2>
-
-    <div class="map-placeholder"></div>
-
-    <div class="location-info">
-      <p>آمستردام، منطقه لوکس مرکزی</p>
-      <p>ساعت کاری: ۱۷:۰۰ تا ۰۱:۰۰</p>
-      <button>مسیر‌یابی</button>
-    </div>
-
-  </section>
-
-  <!-- فوتر -->
-  <footer>
-
-    <div class="footer-content">
-
-      <div>
-        <h3>نُوار کلینری</h3>
-        <p>تعریف دوباره از تجربه غذاهای لوکس</p>
-      </div>
-
-      <div>
-        <p>اینستاگرام | تلگرام | واتساپ</p>
-        <p>contact@noirculinaire.com</p>
-      </div>
-
-      <div>
-        <p>© ۲۰۲۶ تمامی حقوق محفوظ است</p>
-      </div>
-
-    </div>
-
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
