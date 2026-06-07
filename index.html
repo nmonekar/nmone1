@@ -1,168 +1,206 @@
-Act as a world-class restaurant web designer specializing in 2026 luxury food brand websites.
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="تجربه رستوران لوکس میشلن - هنر آشپزی مدرن و طعم‌های خاص" />
+  <title>نُوار کلینری | تجربه غذای لوکس</title>
 
-Create a highly immersive, modern, premium restaurant/cafe website.
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
 
-Goal:
-Make a visually stunning, interactive, high-conversion restaurant website that makes users feel hungry and immediately want to order or visit.
+<body>
 
-Style Direction:
+  <!-- دکمه‌های شناور -->
+  <div class="floating-ui">
+    <button class="floating-btn reserve">رزرو میز</button>
+    <button class="floating-btn whatsapp">سفارش واتساپ</button>
+  </div>
 
-* Ultra modern 2026 UI/UX trends
-* Minimal but cinematic
-* Dark elegant food-focused aesthetic
-* High-end restaurant branding
-* Smooth micro-interactions
-* Scroll-based storytelling experience
+  <!-- هدر سینمایی -->
+  <header class="hero">
 
-Color Palette (Food Luxury Theme):
+    <div class="hero-overlay"></div>
 
-* Deep Espresso Brown (#1B120E)
-* Warm Caramel (#C08A5B)
-* Soft Cream (#F5E6D3)
-* Gold Accent (#D4AF37)
-* Smoke Black (#0E0E0E)
+    <nav class="nav">
+      <div class="logo">نُوار <span>کلینری</span></div>
 
-DO NOT use plain white backgrounds.
+      <ul class="nav-links">
+        <li>منو</li>
+        <li>تجربه</li>
+        <li>سرآشپز</li>
+        <li>موقعیت</li>
+      </ul>
+    </nav>
 
-Design Philosophy:
+    <div class="hero-content">
+      <h1 class="hero-title">طعم را همان‌طور که تا حالا ندیده‌ای تجربه کن</h1>
 
-* Cinematic food presentation
-* Emotional design (make user hungry)
-* Smooth transitions between sections
-* Premium restaurant branding like Michelin-level websites
+      <p class="hero-subtitle">
+        تجربه‌ای لوکس از آشپزی مدرن، احساس، هنر و طعم‌های فراموش‌نشدنی
+      </p>
 
-Technical Requirements:
+      <div class="hero-cta">
+        <button class="btn primary">مشاهده منو</button>
+        <button class="btn secondary">رزرو میز</button>
+      </div>
+    </div>
 
-* HTML, CSS, JavaScript only
-* No frameworks
-* Separate files:
+    <div class="floating-particles"></div>
+  </header>
 
-  * index.html
-  * style.css
-  * script.js
+  <!-- منو -->
+  <section class="menu-section">
 
-2026 Advanced UI Features:
+    <div class="section-header">
+      <h2>منوی ویژه</h2>
+      <p>طراحی شده با وسواس، احساس و بهترین مواد اولیه جهان</p>
+    </div>
 
-1. Cinematic Hero Section
+    <div class="menu-tabs">
+      <button class="tab active">صبحانه</button>
+      <button class="tab">ناهار</button>
+      <button class="tab">شام</button>
+      <button class="tab">نوشیدنی</button>
+    </div>
 
-* Full-screen video background OR food image parallax
-* Dark overlay with warm glow
-* Animated headline:
-  "Experience Taste Like Never Before"
-* Subtext:
-  Premium dining & modern culinary experience
-* CTA Buttons:
+    <div class="menu-grid">
 
-  * View Menu
-  * Reserve Table
-* Floating food particles animation (light steam / bokeh effect)
+      <div class="food-card">
+        <div class="food-img"></div>
+        <h3>تخم‌مرغ ترافل ابری</h3>
+        <p>بافت نرم تخم‌مرغ با عطر ترافل سیاه لوکس</p>
+        <div class="price">۲۸€</div>
+        <button>سفارش</button>
+      </div>
 
-2. Scroll-Based Storytelling Menu Section
+      <div class="food-card">
+        <div class="food-img"></div>
+        <h3>استیک طلایی واگیو</h3>
+        <p>گوشت واگیو با لایه‌ای از کارامل طلایی</p>
+        <div class="price">۶۵€</div>
+        <button>سفارش</button>
+      </div>
 
-* Animated menu categories:
+      <div class="food-card">
+        <div class="food-img"></div>
+        <h3>دسر شکلات ولوت</h3>
+        <p>شکلات داغ با کرم وانیل دودی</p>
+        <div class="price">۲۲€</div>
+        <button>سفارش</button>
+      </div>
 
-  * Breakfast
-  * Lunch
-  * Dinner
-  * Drinks
-* Smooth tab transitions (no page reload)
-* Hover reveals dish details
+    </div>
+  </section>
 
-3. Premium Food Cards (Glass + Glow UI)
-   Each dish card includes:
+  <!-- فلسفه آشپز -->
+  <section class="experience">
 
-* High-quality food image
-* Name of dish
-* Short description
-* Price
-* "Order Now" button
-* Hover glow with warm golden light
+    <div class="experience-content">
+      <h2>فلسفه سرآشپز</h2>
 
-4. Signature Dishes Section
+      <p>
+        هر غذا یک داستان است؛ ترکیبی از احساس، دقت و وسواس در کمال.
+        ما فقط غذا سرو نمی‌کنیم — ما خاطره خلق می‌کنیم.
+      </p>
+    </div>
+  </section>
 
-* Carousel slider (smooth inertia style)
-* Featured chef recommendations
+  <!-- شاهکارهای ویژه -->
+  <section class="signature">
 
-5. Restaurant Experience Section
+    <h2>شاهکارهای سرآشپز</h2>
 
-* Story-based layout
-* Chef introduction
-* Kitchen philosophy
-* Ingredient quality showcase
+    <div class="carousel">
+      <div class="carousel-item">واگیو آتشین سلطنتی</div>
+      <div class="carousel-item">سوشی طلایی اقیانوس</div>
+      <div class="carousel-item">دسر مراسم نیمه‌شب</div>
+    </div>
 
-6. Reservation System UI (Frontend Only)
+  </section>
 
-* Elegant booking form:
+  <!-- رزرو -->
+  <section class="reservation">
 
-  * Name
-  * Phone
-  * Date
-  * Time
-  * Guests
-* Animated input focus states
-* Calendar-style UI feel (visual only)
+    <h2>رزرو میز</h2>
 
-7. Testimonials Section
+    <form>
+      <input type="text" placeholder="نام کامل" required />
+      <input type="tel" placeholder="شماره تماس" required />
+      <input type="date" required />
+      <input type="time" required />
+      <input type="number" placeholder="تعداد مهمان" required />
 
-* Customer reviews with star rating
-* Elegant card stacking animation
+      <button type="submit">تأیید رزرو</button>
+    </form>
 
-8. Location Section
+  </section>
 
-* Interactive map placeholder
-* Address + working hours
-* "Get Directions" button
+  <!-- نظرات -->
+  <section class="testimonials">
 
-9. Floating UI Elements (2026 trend)
+    <h2>نظر مشتریان</h2>
 
-* Sticky "Reserve Table" button
-* Sticky WhatsApp order button
-* Floating glowing dots in background
+    <div class="testimonial-grid">
 
-10. Premium Footer
+      <div class="testimonial">
+        <p>"لوکس‌ترین تجربه غذایی زندگی من بود."</p>
+        <span>★★★★★</span>
+      </div>
 
-* Minimal luxury design
-* Social links
-* Contact info
-* Opening hours
+      <div class="testimonial">
+        <p>"هر غذا مثل یک اثر هنری بود."</p>
+        <span>★★★★★</span>
+      </div>
 
-Advanced Animations:
+      <div class="testimonial">
+        <p>"کاملاً بی‌نقص و فراموش‌نشدنی."</p>
+        <span>★★★★★</span>
+      </div>
 
-* Scroll reveal with depth (parallax layers)
-* Smooth fade-in food sections
-* Hover zoom on dishes
-* Glow interaction system
-* Micro-interactions on every button
-* Background cinematic light movement
+    </div>
 
-Mobile Optimization:
+  </section>
 
-* Mobile-first design
-* Perfect on:
+  <!-- لوکیشن -->
+  <section class="location">
 
-  * 320px
-  * 375px
-  * 425px
-  * 768px
-  * 1024px
-* No horizontal scroll
-* Large CTA buttons
-* Sticky bottom "Order / Reserve" bar on mobile
+    <h2>موقعیت ما</h2>
 
-Performance Requirements:
+    <div class="map-placeholder"></div>
 
-* Lightweight animations
-* Optimized images
-* Fast loading
-* SEO-friendly structure
+    <div class="location-info">
+      <p>آمستردام، منطقه لوکس مرکزی</p>
+      <p>ساعت کاری: ۱۷:۰۰ تا ۰۱:۰۰</p>
+      <button>مسیر‌یابی</button>
+    </div>
 
-Output:
-Provide complete production-ready code for:
+  </section>
 
-1. index.html
-2. style.css
-3. script.js
+  <!-- فوتر -->
+  <footer>
 
-The website must feel like a Michelin-star restaurant digital experience in 2026, not a normal template.
+    <div class="footer-content">
 
-Make it visually unforgettable and emotionally engaging.
+      <div>
+        <h3>نُوار کلینری</h3>
+        <p>تعریف دوباره از تجربه غذاهای لوکس</p>
+      </div>
+
+      <div>
+        <p>اینستاگرام | تلگرام | واتساپ</p>
+        <p>contact@noirculinaire.com</p>
+      </div>
+
+      <div>
+        <p>© ۲۰۲۶ تمامی حقوق محفوظ است</p>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
