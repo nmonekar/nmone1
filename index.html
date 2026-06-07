@@ -3,414 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عمارت مینو | تجربه طعم و اصالت در فضایی سینمایی</title>
-    <meta name="description" content="تجربه‌ای فراتر از طعم در رستوران مجلل مینو. منوی اختصاصی سرآشپز با مواد اولیه ارگانیک و فضایی تکرارنشدنی.">
-    <!-- آیکون‌ها و فونت‌های لوکس متالیک -->
+    <title>مینو | اصالت طعم مدرن</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- افکت ذرات شناور هوابرد و بوکه نوری گرم در پس‌زمینه -->
-    <div class="cinematic-ambience">
-        <div class="steam-particle particle-1"></div>
-        <div class="steam-particle particle-2"></div>
-        <div class="warm-glow-orb"></div>
-    </div>
-
-    <!-- هدر شیشه‌ای معلق -->
-    <header class="main-header">
-        <div class="header-container">
-            <a href="#" class="restaurant-logo">
-                <span class="logo-accent">MEYNOO</span>
-                <span class="logo-sub">RESTAURANT</span>
-            </a>
-            
-            <nav class="nav-container" id="nav-container">
-                <ul class="nav-menu">
-                    <li><a href="#hero" class="nav-link active">آغاز</a></li>
-                    <li><a href="#menu-story" class="nav-link">منو داستانی</a></li>
-                    <li><a href="#signature" class="nav-link">شاهکارهای سرآشپز</a></li>
-                    <li><a href="#philosophy" class="nav-link">اصالت ما</a></li>
-                    <li><a href="#booking" class="nav-link">رزرو میز VIP</a></li>
-                </ul>
-            </nav>
-
-            <div class="header-actions">
-                <a href="#booking" class="btn btn-gold btn-sm desktop-only">رزرو آنلاین میز</a>
-                <button class="menu-hamburger" id="menu-hamburger" aria-label="منو">
-                    <span class="line"></span>
-                    <span class="line"></span>
-                </button>
+    <!-- هدر مینی‌مال خطی -->
+    <header class="luxury-nav">
+        <div class="nav-inside">
+            <a href="#" class="brand-logo">MEYNOO</a>
+            <div class="nav-info-links">
+                <span>تلفن رزرو: ۰۲۱۲۲۰۰XXXX</span>
+                <a href="#reservation" class="cta-line-btn">رزرو سریع میز</a>
             </div>
         </div>
     </header>
 
-    <main>
-        <!-- بخش هیرو سینمایی -->
-        <section id="hero" class="hero-section">
-            <div class="hero-parallax-bg">
-                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1920" alt="غذای لوکس" class="hero-img">
-                <div class="hero-overlay"></div>
+    <!-- بخش اول: هیرو مینی‌مال لوکس -->
+    <section class="hero-minimal">
+        <div class="hero-text-center">
+            <span class="tag-premium">MICHELIN RATED 2026</span>
+            <h1 class="hero-title">تجربه طعم؛ فراتر از یک رویا</h1>
+            <p class="hero-subtext">تلفیق آشپزی مدرن بین‌المللی با اصیل‌ترین مواد اولیه ارگانیک.</p>
+            <div class="hero-action-row">
+                <a href="#menu-showcase" class="btn-solid">مشاهده منوی تصویری</a>
+                <a href="#reservation" class="btn-outline">رزرو صندلی</a>
+            </div>
+        </div>
+        <div class="hero-cover-wrapper">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1600" alt="غذای لوکس مینو">
+        </div>
+    </section>
+
+    <!-- بخش دوم: منوی تصویری واضح و بدون شلوغی -->
+    <section id="menu-showcase" class="menu-section">
+        <div class="section-header">
+            <span class="section-tag">// منوی گزینش‌شده امشب</span>
+            <h2 class="section-title">شاهکارهای سرآشپز</h2>
+        </div>
+
+        <div class="pure-dishes-grid">
+            
+            <!-- دیش ۱ -->
+            <article class="clean-dish-card">
+                <div class="dish-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=800" alt="ریب‌آی استیک">
+                </div>
+                <div class="dish-details">
+                    <div class="dish-meta-row">
+                        <h3>استیک ریب‌آی با سس قارچ دودی</h3>
+                        <span class="price">۷۸۰,۰۰۰ تومان</span>
+                    </div>
+                    <p class="dish-description">۳۵۰ گرم راسته گوساله مرینیت شده، پوره سیب‌زمینی تنوری و سبزیجات معطر گریل شده.</p>
+                </article>
+
+            <!-- دیش ۲ -->
+            <article class="clean-dish-card">
+                <div class="dish-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=800" alt="سالمون گریل">
+                </div>
+                <div class="dish-details">
+                    <div class="dish-meta-row">
+                        <h3>سالمون نروژی با سس هلندی لیمو</h3>
+                        <span class="price">۶۴۰,۰۰0 تومان</span>
+                    </div>
+                    <p class="dish-description">فیله سالمون گریل شده روی پد چوب سدر، به همراه خاویار تزیینی و برنج وحشی معطر.</p>
+                </div>
+            </article>
+
+            <!-- دیش ۳ -->
+            <article class="clean-dish-card">
+                <div class="dish-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=800" alt="میکس گریل">
+                </div>
+                <div class="dish-details">
+                    <div class="dish-meta-row">
+                        <h3>میکس گریل سلطنتی</h3>
+                        <span class="price">۹۲۰,۰۰۰ تومان</span>
+                    </div>
+                    <p class="dish-description">ترکیب لوکس راسته گوسفندی هوم‌مید، جوجه کباب زعفرانی و شاه‌میگوی دریای جنوب.</p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- بخش سوم: فرم رزرو مینی‌مال با وضوح بالا -->
+    <section id="reservation" class="reservation-section">
+        <div class="reservation-box-clean">
+            <div class="res-title-wrapper">
+                <h2>رزرو آنلاین صندلی VIP</h2>
+                <p>ساعت کاری سالن اصلی: ۱۲:۳۰ ظهر الی ۲۴:۰۰ بامداد</p>
             </div>
             
-            <div class="hero-contentcontainer">
-                <div class="premium-tag">
-                    <i class="fa-solid fa-star gold-text"></i> انتخاب برتر منتقدین در سال ۲۰۲۶
+            <form id="pureBookingForm" class="clean-form">
+                <div class="clean-input-group">
+                    <input type="text" id="res-name" placeholder="نام و نام خانوادگی" required>
+                    <input type="tel" id="res-phone" placeholder="شماره تماس مستقیم" required>
+                    <input type="date" id="res-date" required>
+                    <select id="res-time" required>
+                        <option value="">انتخاب سانس حضور</option>
+                        <option value="lunch">۱۳:۰۰ الی ۱۵:۰۰ (ناهار)</option>
+                        <option value="dinner1">۲۰:۰۰ الی ۲۲:۰۰ (شام اول)</option>
+                        <option value="dinner2">۲۲:۰۰ الی ۲۴:۰۰ (شام دوم)</option>
+                    </select>
                 </div>
-                <h1 class="hero-title animate-text">
-                    تجربه طعم؛ <br><span class="text-gold">فراتر از یک رویا</span>
-                </h1>
-                <p class="hero-subtitle">
-                    تلفیق مدرن‌ترین تکنیک‌های آشپزی بین‌المللی با اصیل‌ترین مواد اولیه، در فضایی مجلل و سینمایی.
-                </p>
-                <div class="hero-cta-group">
-                    <a href="#menu-story" class="btn btn-caramel">مشاهده منوی تصویری</a>
-                    <a href="#booking" class="btn btn-outline">رزرو میز اختصاصی</a>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <span class="mouse-wheel"></span>
-                <p>داستان طعم‌ها را اسکرول کنید</p>
-            </div>
-        </section>
-
-        <!-- بخش منوی داستانی مبتنی بر تب -->
-        <section id="menu-story" class="menu-section scroll-reveal">
-            <div class="container">
-                <div class="section-title-wrapper">
-                    <span class="sub-title">// خلقت طعم‌ها</span>
-                    <h2 class="main-title">کارت منوی تفکیک‌شده</h2>
-                </div>
-
-                <!-- دکمه‌های ناویگیشن تب‌ها -->
-                <div class="menu-tabs">
-                    <button class="tab-btn active" data-tab="breakfast">صبحانه شاهانه</button>
-                    <button class="tab-btn" data-tab="lunch">ناهار مجلل</button>
-                    <button class="tab-btn" data-tab="dinner">شام اعیانی</button>
-                    <button class="tab-btn" data-tab="drinks">نوشیدنی‌های خاص</button>
-                </div>
-
-                <!-- محتوای متغیر تب‌ها -->
-                <div class="tabs-content-wrapper">
-                    
-                    <!-- تب صبحانه -->
-                    <div class="tab-content-panel active" id="breakfast">
-                        <div class="dishes-grid">
-                            <div class="dish-card glass-glow-card">
-                                <div class="dish-img-box">
-                                    <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=600" alt="صبحانه انگلیسی">
-                                </div>
-                                <div class="dish-body">
-                                    <div class="dish-header">
-                                        <h3>بشقاب آووکادو و سلمون</h3>
-                                        <span class="dish-price">۳۲۰,۰۰۰ ت</span>
-                                    </div>
-                                    <p class="dish-desc">تخم‌مرغ پوچ شده، ماهی سالمون دودی، پوره آووکادو تازه روی نان تست چاودار دست‌ساز.</p>
-                                    <button class="btn-order">سفارش آنی <i class="fa-solid fa-basket-shopping"></i></button>
-                                </div>
-                            </div>
-                            <div class="dish-card glass-glow-card">
-                                <div class="dish-img-box">
-                                    <img src="https://images.unsplash.com/photo-1513442542250-854d436a73f2?auto=format&fit=crop&q=80&w=600" alt="وافل لوکس">
-                                </div>
-                                <div class="dish-body">
-                                    <div class="dish-header">
-                                        <h3>وافل بلژیکی با سس افرا</h3>
-                                        <span class="dish-price">۲۴۰,۰۰۰ ت</span>
-                                    </div>
-                                    <p class="dish-desc">وافل داغ ترد، میوه‌های استوایی تازه فصل، خامه غلیظ محلی و سس کارامل داغ.</p>
-                                    <button class="btn-order">سفارش آنی <i class="fa-solid fa-basket-shopping"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- تب ناهار -->
-                    <div class="tab-content-panel" id="lunch">
-                        <div class="dishes-grid">
-                            <div class="dish-card glass-glow-card">
-                                <div class="dish-img-box">
-                                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600" alt="دنده کباب">
-                                </div>
-                                <div class="dish-body">
-                                    <div class="dish-header">
-                                        <h3>استیک ریب‌آی با سس قارچ</h3>
-                                        <span class="dish-price">۷۸۰,۰۰۰ ت</span>
-                                    </div>
-                                    <p class="dish-desc">۳۵۰ گرم گوشت راسته گوساله مرینیت شده، پوره سیب‌زمینی دودی، سبزیجات گریل‌شده با کره تنوری.</p>
-                                    <button class="btn-order">سفارش آنی <i class="fa-solid fa-basket-shopping"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- تب شام -->
-                    <div class="tab-content-panel" id="dinner">
-                        <div class="dishes-grid">
-                            <div class="dish-card glass-glow-card">
-                                <div class="dish-img-box">
-                                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600" alt="سالاد ماهی">
-                                </div>
-                                <div class="dish-body">
-                                    <div class="dish-header">
-                                        <h3>سالمون گریل با سس لیمو</h3>
-                                        <span class="dish-price">۶۴۰,۰۰۰ ت</span>
-                                    </div>
-                                    <p class="dish-desc">فیله سالمون نروژی، سس هلندی لیمو و شوید، خاویار تزیینی و برنج وحشی معطر.</p>
-                                    <button class="btn-order">سفارش آنی <i class="fa-solid fa-basket-shopping"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- تب نوشیدنی -->
-                    <div class="tab-content-panel" id="drinks">
-                        <div class="dishes-grid">
-                            <div class="dish-card glass-glow-card">
-                                <div class="dish-img-box">
-                                    <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&q=80&w=600" alt="کوکتل">
-                                </div>
-                                <div class="dish-body">
-                                    <div class="dish-header">
-                                        <h3>موخیتو بری اختصاصی مینو</h3>
-                                        <span class="dish-price">۱۳۵,۰۰۰ ت</span>
-                                    </div>
-                                    <p class="dish-desc">ترکیب شاتوت تازه، نعناع محلی کوبیده شده، لیمو ترش، سودا و عصاره نیشکر طبیعی.</p>
-                                    <button class="btn-order">سفارش آنی <i class="fa-solid fa-basket-shopping"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- بخش شاهکارهای سرآشپز (کاروسل اینرسی حرکتی) -->
-        <section id="signature" class="signature-section scroll-reveal">
-            <div class="container">
-                <div class="section-title-wrapper-center">
-                    <span class="sub-title">// امضای عمارت مینو</span>
-                    <h2 class="main-title">پیشنهادات استثنایی سرآشپز</h2>
-                </div>
-                
-                <div class="carousel-container">
-                    <div class="carousel-track" id="carousel-track">
-                        
-                        <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=500" alt="میکس گریل">
-                            <div class="carousel-info">
-                                <h3>میکس گریل سلطنتی</h3>
-                                <p>انتخاب لوکس از راسته گوسفندی، جوجه کباب زعفرانی و شاه‌میگو</p>
-                            </div>
-                        </div>
-                        
-                        <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=500" alt="پیتزا ناپولی">
-                            <div class="carousel-info">
-                                <h3>پیتزا ترافل سیاه</h3>
-                                <p>خمیر ۴۸ ساعت استراحت، قارچ ترافل کوهستان، پنیر موزارلا بوفالو تازه</p>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&q=80&w=500" alt="دسر شیرین">
-                            <div class="carousel-info">
-                                <h3>فوندانت شکلات با روکش طلا</h3>
-                                <p>مغز شکلات بلژیکی روان، بستنی وانیل ماداگاسکار و ورق طلای خوراکی</p>
-                            </div>
-                        </div>
-
-                    </div>
-                    
-                    <!-- دکمه‌های ناوبری کاروسل -->
-                    <div class="carousel-nav">
-                        <button class="nav-arrow prev" id="carousel-prev"><i class="fa-solid fa-chevron-right"></i></button>
-                        <button class="nav-arrow next" id="carousel-next"><i class="fa-solid fa-chevron-left"></i></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- بخش فلسفه و اصالت آشپزخانه مینو -->
-        <section id="philosophy" class="philosophy-section scroll-reveal">
-            <div class="container philosophy-grid">
-                <div class="philosophy-text-side">
-                    <span class="sub-title">// از مزرعه تا عمارت</span>
-                    <h2 class="main-title">هنر، دقت و کیفیت مواد اولیه</h2>
-                    <p class="philosophy-desc">
-                        در آشپزخانه مینو، آشپزی یک علم تعاملی است. ما معتقدیم کیفیت یک بشقاب فوق‌العاده از خاک آغاز می‌شود؛ به همین دلیل تمام سبزیجات، ادویه‌ها و گوشت‌های مصرفی به صورت مستقیم و روزانه از مزارع ارگانیک اختصاصی رستوران تامین می‌گردند. هیچ نگه‌دارنده یا اسانس مصنوعی در حریم آشپزخانه ما جایی ندارد.
-                    </p>
-                    <div class="chef-signature-box">
-                        <div class="chef-avatar">
-                            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&q=80&w=200" alt="سرآشپز مینو">
-                        </div>
-                        <div>
-                            <h4>استاد کیان زندی</h4>
-                            <p>سرآشپز ارشد و طراح طعم عمارت مینو</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="philosophy-visual-side">
-                    <div class="visual-wrapper">
-                        <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&q=80&w=800" alt="آشپزخانه لوکس">
-                        <div class="floating-badge-experience">
-                            <span class="num">۱۵</span>
-                            <span class="lbl">سال پایداری در بالاترین سطح کیفیت</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- بخش سیستم رزرو پیشرفته فرانت‌اند -->
-        <section id="booking" class="booking-section scroll-reveal">
-            <div class="container max-width-md">
-                <div class="glass-booking-card">
-                    <div class="booking-header">
-                        <span class="sub-title">// میز وی‌آی‌پـی شما منتظر است</span>
-                        <h2>فرم رزرواسیون آنلاین هوشمند</h2>
-                        <p>جهت تضمین حضور در سالن اصلی یا پنت‌هاوس، لطفا مشخصات خود را ثبت فرمایید.</p>
-                    </div>
-                    
-                    <form class="booking-form" id="bookingForm" onsubmit="event.preventDefault();">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="book-name">نام و نام خانوادگی</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-user"></i>
-                                    <input type="text" id="book-name" placeholder="مثال: امیرحسین کریمی" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="book-phone">شماره تماس مستقیم</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-phone"></i>
-                                    <input type="tel" id="book-phone" placeholder="۰۹۱۲XXXXXXX" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="book-date">انتخاب تاریخ حضور</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-calendar-days"></i>
-                                    <input type="date" id="book-date" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="book-time">انتخاب ساعت</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-clock"></i>
-                                    <select id="book-time" required>
-                                        <option value="">انتخاب سانس حضور</option>
-                                        <option value="13">۱۳:۰۰ الی ۱۵:۰۰ (ناهار)</option>
-                                        <option value="20">۲۰:۰۰ الی ۲۲:۰۰ (شام اول)</option>
-                                        <option value="22">۲۲:۰۰ الی ۲۴:۰۰ (شام دوم)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="book-guests">تعداد میهمانان گرامی</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-users"></i>
-                                    <input type="number" id="book-guests" min="1" max="20" placeholder="تعداد نفرات" required>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-gold btn-full mt-24">ثبت نهایی و صدور توکن رزرواسیون</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- بخش دیدگاه‌های کارفرمایان و منتقدین (کارت‌های انباشته) -->
-        <section class="testimonials-section scroll-reveal">
-            <div class="container max-width-sm">
-                <div class="section-title-wrapper-center">
-                    <span class="sub-title">// روایت میهمانان</span>
-                    <h2 class="main-title">نظرات ثبت شده کارشناسان طعم</h2>
-                </div>
-                <div class="stack-wrapper">
-                    
-                    <div class="testi-card active">
-                        <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"بافت استیک ریب‌آی که در عمارت مینو تجربه کردم کاملاً بی‌نظیر بود. سس ترافل سیاه طعمی عمیق و ماندگار داشت که استانداردهای فراتر از خاورمیانه را ارائه می‌دهد."</p>
-                        <span class="testi-user">مهندس سهراب دیبا - منتقد رستوران‌های لوکس</span>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- بخش موقعیت مکانی و ساعات کاری -->
-        <section class="location-section scroll-reveal">
-            <div class="container location-grid">
-                <div class="map-placeholder">
-                    <!-- نمای ماک‌آپ نقشه لوکس تیره با کدهای استایل هماهنگ -->
-                    <div class="dark-map-ui">
-                        <div class="map-pin"><i class="fa-solid fa-location-dot"></i></div>
-                        <p>نمای نقشه تعاملی عمارت مینو ثبت شده در سیستم شتاب سئو</p>
-                    </div>
-                </div>
-                <div class="location-info-side">
-                    <span class="sub-title">// پذیرای حضور شما هستیم</span>
-                    <h2 class="main-title">آدرس و زمان‌بندی سالن</h2>
-                    <p class="address-text"><i class="fa-solid fa-map-location-dot text-gold"></i> تهران، نیاوران، خیابان بوکان، پلاک ۴۴، عمارت باشکوه مینو</p>
-                    
-                    <div class="working-hours-box">
-                        <h3><i class="fa-solid fa-door-open text-gold"></i> ساعات فعالیت رسمی</h3>
-                        <div class="hours-row"><span>شنبه تا چهارشنبه:</span> <span>۱۲:۳۰ ظهر الی ۲۴:۰۰ بامداد</span></div>
-                        <div class="hours-row"><span>پنجشنبه و جمعه:</span> <span>۱۳:۰۰ ظهر الی ۰۱:۰۰ بامداد</span></div>
-                    </div>
-                    
-                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-full">
-                        <span>مسیریابی روی نقشه گوگل</span> <i class="fa-solid fa-location-arrow"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- المان‌های شناور و فیکس شده چسبان (Sticky Widgets) -->
-    <div class="sticky-action-bar">
-        <a href="https://wa.me/#" target="_blank" rel="noopener noreferrer" class="sticky-btn whatsapp-color" aria-label="سفارش از طریق واتس‌اپ">
-            <i class="fa-brands fa-whatsapp"></i> <span class="sticky-lbl">سفارش در واتس‌اپ</span>
-        </a>
-        <a href="#booking" class="sticky-btn reserve-color" aria-label="رزرو سریع میز">
-            <i class="fa-solid fa-chair"></i> <span class="sticky-lbl">رزرو آنی میز</span>
-        </a>
-    </div>
-
-    <!-- فوتر مجلل و مینی‌مال رستوران -->
-    <footer class="luxury-footer">
-        <div class="container footer-layout">
-            <div class="footer-brand-column">
-                <h3>MEYNOO</h3>
-                <p>خلق شاهکارهای خوراکی متمایز با احترام به هویت اصیل ایرانی و متدهای مدرن بین‌المللی.</p>
-                <div class="social-medias">
-                    <a href="#" aria-label="اینستاگرام"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="توییتر"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" aria-label="یوتیوب"><i class="fa-brands fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-links-column">
-                <h4>دسترسی سریع</h4>
-                <ul>
-                    <li><a href="#hero">صفحه اصلی</a></li>
-                    <li><a href="#menu-story">منوی دیجیتال</a></li>
-                    <li><a href="#booking">ثبت رزرواسیون</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact-column">
-                <h4>پل‌های ارتباطی</h4>
-                <p><i class="fa-solid fa-phone text-gold"></i> ۰۲۱-۲۲۰۰XXXX</p>
-                <p><i class="fa-solid fa-envelope text-gold"></i> concierge@meynoo.luxury</p>
-            </div>
+                <button type="submit" class="btn-submit-luxury">تایید و ثبت رزرواسیون</button>
+            </form>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; ۲۰۲۶ عمارت مینو. توسعه یافته با کدهای بهینه‌سازی شده فرانت‌اند.</p>
+    </section>
+
+    <!-- بخش نهایی: آدرس و فوتر خطی -->
+    <footer class="minimal-footer">
+        <div class="footer-top-info">
+            <p><i class="fa-solid fa-map-pin text-caramel"></i> تهران، نیاوران، خیابان بوکان، پلاک ۴۴، عمارت مینو</p>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; ۲۰۲۶ عمارت مینو. کلیه حقوق مادی و معنوی محفوظ است.</p>
         </div>
     </footer>
+
+    <!-- دکمه چسبان بسیار ساده در موبایل برای اقدام سریع -->
+    <div class="mobile-sticky-bar">
+        <a href="#reservation" class="sticky-action-button">ثبت رزرواسیون آنی میز</a>
+    </div>
 
     <script src="script.js"></script>
 </body>
