@@ -1,357 +1,467 @@
-/* --- متغیرهای اختصاصی تم لوکس و فواصل سیال --- */
+/* ==========================================================================
+   طراحی سیستم رنگی گرم لوکس و اشتهاآور - فاقد رنگ سفید مطلق
+   ========================================================================== */
 :root {
-    --primary-gold: #D4AF37;
-    --light-gold: #F3E5AB;
-    --dark-gold: #AA7C11;
-    --bg-black: #060606;
-    --bg-card: #111111;
-    --text-white: #FFFFFF;
-    --text-gray: #8E8E93; /* خاکستری استاندارد iOS برای خوانایی بهتر */
-    --glass-bg: rgba(18, 18, 18, 0.8);
-    --glass-border: rgba(212, 175, 55, 0.15);
-    --font-heading: 'Cinzel', serif;
-    --font-body: 'Vazirmatn', sans-serif;
-    --transition-smooth: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-    --touch-target: 48px;
+    --bg-espresso: #1B120E;     /* قهوه‌ای عمیق اسپرسو - ایجاد حس گرمای محیط */
+    --bg-smoke: #0E0E0E;        /* مشکی دودی سینمایی پس‌زمینه */
+    --accent-caramel: #C08A5B;  /* کاراملی گرم برای دکمه‌ها و جلب توجه */
+    --accent-cream: #F5E6D3;    /* کرم ملایم برای متون اصلی با کنتراست بالا */
+    --accent-gold: #D4AF37;     /* طلایی لوکس مات برای جزئیات وی‌آی‌پی */
+    --text-muted: #A39382;      /* کرم تیره مات برای توضیحات فرعی */
+    
+    --glass-surface: rgba(27, 18, 14, 0.7);
+    --border-subtle: rgba(192, 138, 91, 0.15);
+    --shadow-premium: 0 30px 60px rgba(0, 0, 0, 0.6);
+    --transition-cinema: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    --font-primary: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-* {
-    margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent; /* حذف هایلایت آبی پیش‌فرض موبایل */
+/* ساختار ریست و جهت‌دهی فارسی */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: var(--bg-smoke);
 }
 
 body {
-    background-color: var(--bg-black);
-    color: var(--text-white);
-    font-family: var(--font-body);
+    background-color: var(--bg-smoke);
+    color: var(--accent-cream);
+    font-family: var(--font-primary);
+    line-height: 1.65;
     overflow-x: hidden;
-    line-height: 1.7;
     text-align: right;
-    padding-bottom: 80px; /* ایجاد فضا برای دکمه‌های Sticky در موبایل */
 }
 
-/* بهینه‌سازی تاچ‌پد و اسکرول در مک و موبایل */
-html {
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.max-width-md { max-width: 800px; }
+.max-width-sm { max-width: 650px; }
+.text-gold { color: var(--accent-gold); }
+.gold-text { color: var(--accent-gold); }
+.mt-24 { margin-top: 24px; }
+
+/* موتور نورپردازی و افکت ذرات شناور سینمایی */
+.cinematic-ambience {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0; left: 0; z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+.warm-glow-orb {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(192, 138, 91, 0.06) 0%, transparent 70%);
+    top: 20%; right: -10%;
+    filter: blur(80px);
+}
+.steam-particle {
+    position: absolute;
+    background: rgba(245, 230, 211, 0.15);
+    border-radius: 50%;
+    filter: blur(4px);
+}
+.particle-1 { width: 80px; height: 80px; top: 70%; left: 10%; animation: floatSteam 12s infinite linear; }
+.particle-2 { width: 120px; height: 120px; top: 40%; right: 15%; animation: floatSteam 18s infinite linear reverse; }
+@keyframes floatSteam {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.2; }
+    50% { transform: translateY(-40px) scale(1.1) rotate(180deg); opacity: 0.4; }
+    100% { transform: translateY(0) scale(1) rotate(360deg); opacity: 0.2; }
 }
 
-.container {
-    width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;
-}
-
-/* افکت‌های رنگی و تزیینی */
-.gold-text {
-    background: linear-gradient(135deg, var(--light-gold), var(--primary-gold), var(--dark-gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
-
-.accent-line {
-    width: 50px; height: 2px;
-    background: linear-gradient(to left, var(--primary-gold), transparent);
-    margin: 12px auto 0;
-}
-
-.section-tag {
-    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
-    color: var(--primary-gold); display: block; margin-bottom: 4px;
-}
-
-/* سیستم دکمه‌های ارگونومیک با Touch Target بزرگ */
+/* دکمه‌های پرمیوم و بهینه‌سازی شده سیستم */
 .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 0 32px; height: var(--touch-target); font-weight: 500;
-    font-size: 0.85rem; cursor: pointer; transition: var(--transition-smooth);
-    border-radius: 0px; border: none; text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: var(--transition-cinema);
+    cursor: pointer;
+    border: none;
+    font-size: 0.95rem;
 }
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
-    color: #000; font-weight: 700;
+.btn-caramel {
+    background: linear-gradient(135deg, var(--accent-caramel), #A06D42);
+    color: var(--bg-smoke);
+    padding: 16px 36px;
+    box-shadow: 0 10px 30px rgba(192, 138, 91, 0.2);
 }
-
-.btn-primary:active {
-    transform: scale(0.97);
+.btn-caramel:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(192, 138, 91, 0.35);
 }
-
-.btn-secondary {
-    background: transparent; border: 1px solid var(--primary-gold); color: var(--primary-gold);
+.btn-outline {
+    background: transparent;
+    color: var(--accent-cream);
+    border: 1px solid rgba(245, 230, 211, 0.2);
+    padding: 16px 36px;
 }
-
-/* پرلوئدر لوکس */
-.loader-container {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-color: var(--bg-black); z-index: 9999;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    transition: opacity 0.5s ease;
+.btn-outline:hover {
+    background: rgba(245, 230, 211, 0.04);
+    border-color: var(--accent-caramel);
+    color: var(--accent-caramel);
+    transform: translateY(-2px);
 }
-
-.loader-logo {
-    font-family: var(--font-heading); font-size: 3rem; color: var(--primary-gold); letter-spacing: 6px; margin-bottom: 5px;
+.btn-gold {
+    background: linear-gradient(135deg, var(--accent-gold), #B5932A);
+    color: var(--bg-smoke);
+    padding: 14px 28px;
 }
+.btn-sm { font-size: 0.85rem; border-radius: 8px; padding: 10px 20px; }
+.btn-full { width: 100%; }
 
-.loader-subtitle { font-size: 0.8rem; color: var(--text-gray); margin-bottom: 20px; }
-.loader-bar { width: 160px; height: 1px; background-color: rgba(212, 175, 55, 0.1); position: relative; overflow: hidden; }
-.loader-bar::after {
-    content: ''; position: absolute; width: 60px; height: 100%;
-    background: linear-gradient(to right, transparent, var(--primary-gold), transparent);
-    right: -60px; animation: loading 1.2s infinite ease-in-out;
+/* هدر لوکس با شیشه معلق مدرن */
+.main-header {
+    position: fixed;
+    top: 0; left: 0; width: 100%; z-index: 1000;
+    background: rgba(14, 14, 14, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(192, 138, 91, 0.1);
 }
-@keyframes loading { 0% { right: -60px; } 100% { right: 160px; } }
-
-/* هدر شیشه‌ای فوق پیشرفته موبایل */
-.header {
-    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-    background: rgba(6, 6, 6, 0.85); backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border);
-    transition: var(--transition-smooth);
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
-
-.header-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-.logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--primary-gold); letter-spacing: 1px; }
-
-.nav-menu { display: flex; gap: 30px; }
-.nav-link { font-size: 0.9rem; color: var(--text-gray); font-weight: 400; position: relative; padding: 8px 0; }
-.nav-link:hover, .nav-link.active { color: var(--primary-gold); }
-
-.search-box { position: relative; width: 220px; }
-.search-box input {
-    width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.15);
-    padding: 10px 40px 10px 15px; color: var(--text-white); font-size: 0.85rem; font-family: var(--font-body); outline: none;
+.restaurant-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1;
 }
-.search-box input:focus { border-color: var(--primary-gold); background: rgba(255, 255, 255, 0.06); }
-.search-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--primary-gold); font-size: 0.85rem; }
+.logo-accent { font-size: 1.4rem; font-weight: 900; letter-spacing: 0.05em; color: var(--accent-cream); }
+.logo-sub { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; color: var(--accent-caramel); margin-top: 4px; }
 
-.mobile-search-container { display: none; padding-bottom: 12px; }
-
-.header-actions { display: flex; align-items: center; gap: 15px; }
-.action-item {
-    position: relative; cursor: pointer; font-size: 1.3rem;
-    width: var(--touch-target); height: var(--touch-target);
-    display: flex; align-items: center; justify-content: center;
+.nav-container {
+    position: fixed;
+    top: 90px; right: -100%;
+    width: 100%; height: calc(100vh - 90px);
+    background: var(--bg-smoke);
+    padding: 40px 24px;
+    transition: var(--transition-cinema);
 }
+.nav-container.active { right: 0; }
+.nav-menu { list-style: none; display: flex; flex-direction: column; gap: 32px; }
+.nav-link { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 1.2rem; transition: var(--transition-cinema); }
+.nav-link:hover, .nav-link.active { color: var(--accent-caramel); padding-right: 6px; }
 
-.badge {
-    position: absolute; top: 4px; right: 2px; background-color: var(--primary-gold); color: #000;
-    font-size: 0.7rem; font-weight: 700; width: 18px; height: 18px; border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
+.menu-hamburger {
+    background: transparent; border: none; cursor: pointer;
+    display: flex; flex-direction: column; gap: 8px;
 }
+.menu-hamburger .line { width: 28px; height: 2px; background-color: var(--accent-caramel); border-radius: 2px; transition: var(--transition-cinema); }
+.menu-hamburger.active .line:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.menu-hamburger.active .line:nth-child(2) { transform: translateY(-5px) rotate(-45deg); }
+.desktop-only { display: none; }
 
-.mobile-toggle {
-    font-size: 1.3rem; cursor: pointer; color: var(--primary-gold);
-    width: var(--touch-target); height: var(--touch-target);
-    display: flex; align-items: center; justify-content: center;
+/* بخش هیرو سینمایی باشکوه */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 20px 60px;
+    overflow: hidden;
 }
-
-/* هیرو اولترالوکس با چیدمان واکنش‌گرا */
-.hero {
-    position: relative; min-height: 100vh; padding-top: 90px;
-    background-image: url('https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&q=80&w=1920');
-    background-size: cover; background-position: center; display: flex; align-items: center;
+.hero-parallax-bg {
+    position: absolute;
+    inset: 0; z-index: -1;
+}
+.hero-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.05);
+    filter: brightness(45%) contrast(105%);
 }
 .hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(6,6,6,1) 20%, rgba(6,6,6,0.8) 60%, rgba(6,6,6,0.4) 100%);
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--bg-smoke) 5%, transparent 60%);
 }
-.hero-content { position: relative; z-index: 10; max-width: 650px; padding-top: 40px; padding-bottom: 60px; }
-.hero-title { font-size: 2.8rem; font-weight: 700; line-height: 1.3; margin-bottom: 20px; }
-.hero-description { color: var(--text-gray); font-size: 1rem; margin-bottom: 35px; max-width: 550px; }
-.hero-buttons { display: flex; flex-direction: column; gap: 12px; }
-.hero-buttons .btn { width: 100%; margin: 0; }
-
-/* دسته‌بندی‌ها با قابلیت اسکرول افقی نیتیو روی موبایل */
-.categories { padding: 60px 0 30px; }
-.section-header { text-align: center; margin-bottom: 40px; }
-.section-title { font-size: 1.8rem; font-weight: 700; margin-top: 4px; }
-
-.categories-slider-wrapper {
-    margin: 0 -20px; padding: 0 20px; overflow-x: auto;
-    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+.hero-contentcontainer { max-width: 700px; margin: 0 auto; text-align: center; }
+.premium-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(192, 138, 91, 0.1);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 16px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-caramel);
+    margin-bottom: 24px;
 }
-.categories-slider-wrapper::-webkit-scrollbar { display: none; }
+.hero-title { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; line-height: 1.25; margin-bottom: 24px; }
+.hero-subtitle { color: var(--text-muted); font-size: clamp(1rem, 2.5vw, 1.25rem); margin-bottom: 40px; }
+.hero-cta-group { display: flex; flex-direction: column; gap: 16px; justify-content: center; }
 
-.categories-grid { display: flex; gap: 12px; width: max-content; }
-.category-card {
-    background: var(--glass-bg); border: 1px solid var(--glass-border);
-    padding: 20px 25px; text-align: center; cursor: pointer; transition: var(--transition-smooth);
-    display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 135px;
+.scroll-indicator {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--text-muted);
 }
-.category-card i { font-size: 1.6rem; color: var(--primary-gold); margin-bottom: 10px; }
-.category-card span { font-size: 0.8rem; font-weight: 500; color: var(--text-gray); white-space: nowrap; }
-.category-card.active { border-color: var(--primary-gold); background: rgba(212, 175, 55, 0.05); }
-.category-card.active span { color: var(--text-white); }
-
-/* محصولات استایل گالری کارت متمایز */
-.products { padding: 30px 0 60px; }
-.products-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-.product-card { background-color: var(--bg-card); border: 1px solid var(--glass-border); position: relative; }
-.product-image-box { position: relative; background-color: #121212; padding: 30px; height: 280px; display: flex; justify-content: center; align-items: center; }
-.product-image-box img { max-height: 100%; object-fit: contain; }
-.badge-discount { position: absolute; top: 15px; right: 15px; background-color: var(--primary-gold); color: #000; font-weight: 700; font-size: 0.75rem; padding: 3px 10px; }
-
-/* دکمه‌های اکشن کارت همیشه نمایان روی موبایل برای بهینه‌سازی UX لمسی */
-.product-overlay-actions { position: absolute; bottom: 15px; left: 15px; display: flex; flex-direction: column; gap: 10px; z-index: 5; }
-.action-btn { width: 42px; height: 42px; background-color: rgba(0,0,0,0.8); border: 1px solid var(--primary-gold); color: var(--primary-gold); display: flex; justify-content: center; align-items: center; border-radius: 50%; font-size: 1rem; }
-
-.product-info { padding: 20px; }
-.product-title { font-size: 1.15rem; margin-bottom: 8px; font-weight: 600; }
-.product-rating { color: var(--primary-gold); font-size: 0.75rem; margin-bottom: 15px; }
-.product-price-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.product-price { font-size: 1.15rem; font-weight: 700; color: var(--primary-gold); }
-.btn-add-cart { background: var(--primary-gold); border: none; color: #000; padding: 0 16px; height: 40px; font-size: 0.8rem; font-weight: 700; cursor: pointer; flex: 1; text-align: center; }
-
-/* خبرنامه مجلل */
-.newsletter { padding: 80px 0; text-align: center; background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-position: center; }
-.newsletter::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(6, 6, 6, 0.9); }
-.newsletter-content { position: relative; z-index: 5; }
-.newsletter h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 15px; }
-.newsletter p { color: var(--text-gray); margin-bottom: 30px; font-size: 0.95rem; }
-.newsletter-form { display: flex; flex-direction: column; gap: 12px; }
-.newsletter-form input { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 14px 20px; color: var(--text-white); font-family: var(--font-body); outline: none; font-size: 0.9rem; }
-.newsletter-form .btn { height: 50px; font-weight: 700; }
-
-/* سیستم منوی چسبان ارگونومیک ارشد پایین صفحه (Sticky Actions) */
-.mobile-sticky-actions {
-    position: fixed; bottom: 0; left: 0; width: 100%; height: 68px;
-    background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--glass-border);
-    display: flex; align-items: center; padding: 0 15px; gap: 10px; z-index: 99;
+.mouse-wheel {
+    width: 20px; height: 35px; border: 2px solid var(--border-subtle); border-radius: 10px; position: relative;
 }
-.sticky-cta-btn {
-    flex: 1; background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
-    color: #000; height: 48px; display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 0.85rem; gap: 8px; box-shadow: 0 4px 15px rgba(212,175,55,0.2);
+.mouse-wheel::before {
+    content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 8px; background-color: var(--accent-caramel); border-radius: 2px;
+    animation: scrollMouse 1.5s infinite;
 }
-.sticky-whatsapp-btn {
-    width: 48px; height: 48px; background-color: #25D366; color: #fff;
-    display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-    box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+@keyframes scrollMouse { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 18px; } }
+
+/* سرفصل‌های هماهنگ ساختار */
+.section-title-wrapper { margin-bottom: 40px; }
+.section-title-wrapper-center { text-align: center; margin-bottom: 48px; }
+.sub-title { font-size: 0.85rem; font-weight: 800; color: var(--accent-caramel); display: block; margin-bottom: 8px; letter-spacing: 0.05em; }
+.main-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; }
+
+/* بخش منو داستانی مبتنی بر تب */
+.menu-section { padding: 100px 0; }
+.menu-tabs {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px;
+    border-bottom: 1px solid rgba(192, 138, 91, 0.1); padding-bottom: 16px;
 }
+.tab-btn {
+    background: transparent; border: none; color: var(--text-muted);
+    padding: 10px 20px; font-family: var(--font-primary); font-size: 0.95rem;
+    font-weight: 700; cursor: pointer; transition: var(--transition-cinema);
+    border-radius: 8px;
+}
+.tab-btn:hover, .tab-btn.active { color: var(--accent-caramel); background: rgba(192, 138, 91, 0.05); }
 
-/* سیستم کشو و مودال بهینه‌شده برای نمایشگرهای لمسی */
-.drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 150; opacity: 0; pointer-events: none; transition: var(--transition-smooth); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
-.drawer-overlay.active { opacity: 1; pointer-events: auto; }
+.tab-content-panel { display: none; }
+.tab-content-panel.active { display: block; animation: fadeInTab 0.5s ease-in-out forwards; }
+@keyframes fadeInTab { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-.cart-drawer { position: fixed; top: 0; left: -100%; width: 100%; max-width: 420px; height: 100%; background-color: var(--bg-black); border-right: 1px solid var(--glass-border); z-index: 200; display: flex; flex-direction: column; transition: var(--transition-smooth); padding: 25px; }
-.cart-drawer.active { left: 0; }
-.cart-drawer-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; margin-bottom: 15px; }
-.cart-drawer-header h3 { font-size: 1.25rem; font-weight: 700; }
-.close-cart { font-size: 1.3rem; cursor: pointer; width: var(--touch-target); height: var(--touch-target); display: flex; align-items: center; justify-content: center; color: var(--text-gray); }
+.dishes-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
 
-.cart-items { flex: 1; overflow-y: auto; }
-.cart-item { display: flex; gap: 15px; align-items: center; background: #121212; padding: 15px; border: 1px solid var(--glass-border); margin-bottom: 12px; }
-.cart-item-img { width: 65px; height: 65px; object-fit: contain; background: #161616; }
-.cart-item-details { flex: 1; }
-.cart-item-title { font-size: 0.95rem; margin-bottom: 4px; font-weight: 500; }
-.cart-item-price { color: var(--primary-gold); font-weight: 700; font-size: 0.9rem; }
-.cart-item-ctrl { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
-.ctrl-btn { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: var(--text-white); width: 32px; height: 32px; display: flex; justify-content: center; align-items: center; cursor: pointer; }
-.cart-item-remove { color: var(--text-gray); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; margin-right: auto; }
+/* کارت‌های غذا با استایل شیشه‌ای لوکس (Glass UI) */
+.glass-glow-card {
+    background: rgba(27, 18, 14, 0.4);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: var(--transition-cinema);
+}
+.glass-glow-card:hover {
+    border-color: var(--accent-caramel);
+    box-shadow: 0 15px 40px rgba(192, 138, 91, 0.15);
+    transform: translateY(-4px);
+}
+.dish-img-box { position: relative; width: 100%; height: 220px; overflow: hidden; }
+.dish-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-cinema); }
+.glass-glow-card:hover .dish-img-box img { transform: scale(1.04); }
 
-.cart-drawer-footer { border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: 15px; }
-.cart-total { display: flex; justify-content: space-between; font-size: 1.15rem; margin-bottom: 15px; }
-.cart-total span:last-child { color: var(--primary-gold); font-weight: 700; }
-.checkout-btn { width: 100%; height: 50px; font-weight: 700; }
-
-/* مدال پاپ آپ تمام صفحه موبایل برای بیشترین تمرکز روی مشخصات فنی کالا */
-.product-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 300; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: var(--transition-smooth); padding: 0; }
-.product-modal.active { opacity: 1; pointer-events: auto; }
-.modal-content { background-color: var(--bg-black); border: none; width: 100%; height: 100%; overflow-y: auto; position: relative; padding: 60px 20px 40px; }
-.modal-close { position: absolute; top: 15px; left: 15px; font-size: 1.4rem; cursor: pointer; color: var(--text-gray); z-index: 10; width: var(--touch-target); height: var(--touch-target); display: flex; align-items: center; justify-content: center; }
-
-.modal-grid { display: flex; flex-direction: column; gap: 30px; }
-.main-modal-img { background: #121212; padding: 20px; height: 260px; display: flex; justify-content: center; align-items: center; border: 1px solid var(--glass-border); }
-.main-modal-img img { max-height: 100%; object-fit: contain; }
-.thumb-gallery { display: flex; gap: 10px; }
-.thumb-img { width: 70px; height: 70px; background: #121212; border: 1px solid var(--glass-border); padding: 8px; cursor: pointer; }
-.thumb-img.active { border-color: var(--primary-gold); }
-
-.modal-info-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
-.modal-info-price { font-size: 1.4rem; color: var(--primary-gold); font-weight: 700; margin-bottom: 15px; }
-.modal-info-desc { color: var(--text-gray); margin-bottom: 25px; font-size: 0.95rem; text-align: justify; }
-.specs-list { margin-bottom: 25px; }
-.specs-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(212,175,55,0.08); font-size: 0.9rem; }
-
-.qty-row { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
-.qty-row .qty-selector { height: var(--touch-target); width: 100%; justify-content: space-between; }
-.qty-row .qty-selector .ctrl-btn { width: 50px; height: 100%; }
-.qty-row .btn { width: 100%; height: var(--touch-target); font-weight: 700; }
-
-.reviews-section { margin-top: 25px; border-top: 1px solid var(--glass-border); padding-top: 25px; }
-.reviews-header { font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; color: var(--primary-gold); }
-.review-card { background: #121212; border: 1px solid var(--glass-border); padding: 20px; }
-.review-meta { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; }
-.review-text { color: var(--text-gray); font-size: 0.9rem; }
-
-/* فوتر لوکس */
-.footer { background-color: #030303; border-top: 1px solid var(--glass-border); padding: 60px 0 30px; }
-.footer-container { display: flex; flex-direction: column; gap: 35px; margin-bottom: 40px; }
-.footer-about { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px; }
-.social-links { display: flex; gap: 12px; }
-.social-links a { width: 44px; height: 44px; border: 1px solid var(--glass-border); display: flex; justify-content: center; align-items: center; color: var(--text-gray); border-radius: 50%; }
-
-.footer-col h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 18px; color: var(--primary-gold); }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a { color: var(--text-gray); font-size: 0.9rem; }
-.footer-contact li { display: flex; gap: 12px; color: var(--text-gray); font-size: 0.9rem; margin-bottom: 12px; }
-.footer-bottom { border-top: 1px solid rgba(212,175,55,0.03); padding-top: 25px; display: flex; flex-direction: column; gap: 10px; text-align: center; color: rgba(255,255,255,0.2); font-size: 0.8rem; }
-
-/* --- ساختار ناوبری دسکتاپ (Responsive Desktop Adaptation) --- */
-@media (min-width: 769px) {
-    body { padding-bottom: 0; }
-    .mobile-sticky-actions { display: none; }
-    .mobile-toggle { display: none; }
-    .header-container { height: 90px; }
-    .nav-menu { position: static; background: transparent; flex-direction: row; height: auto; width: auto; padding: 0; opacity: 1; pointer-events: auto; }
-    .nav-link::after { content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 1px; background: var(--primary-gold); transition: var(--transition-smooth); }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    
-    .hero { padding-top: 0; }
-    .hero-overlay { background: linear-gradient(to left, rgba(6,6,6,0.95) 40%, rgba(6,6,6,0.2) 100%); }
-    .hero-title { font-size: 3.8rem; }
-    .hero-buttons { flex-direction: row; }
-    .hero-buttons .btn { width: auto; }
-    
-    .categories-slider-wrapper { margin: 0; padding: 0; overflow: visible; }
-    .categories-grid { display: grid; grid-template-columns: repeat(5, 1fr); width: 100%; gap: 20px; }
-    .category-card { padding: 30px 20px; }
-    
-    .products-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .product-card:hover { transform: translateY(-8px); border-color: var(--primary-gold); box-shadow: 0 15px 40px rgba(0,0,0,0.7); }
-    .product-image-box img { transition: var(--transition-smooth); }
-    .product-card:hover .product-image-box img { transform: scale(1.05); }
-    .product-overlay-actions { bottom: -60px; left: 0; width: 100%; flex-direction: row; justify-content: center; opacity: 0; padding-bottom: 20px; }
-    .product-card:hover .product-overlay-actions { bottom: 0; opacity: 1; }
-    .btn-add-cart { background: transparent; border: 1px solid rgba(212,175,55,0.2); color: var(--text-white); flex: none; }
-    .product-card:hover .btn-add-cart { background: var(--primary-gold); color: #000; }
-    
-    .newsletter-form { flex-direction: row; max-width: 600px; margin: 0 auto; }
-    .newsletter-form input { flex: 1; }
-    .newsletter-form .btn { width: auto; }
-    
-    .cart-drawer { border-right: 1px solid var(--glass-border); border-left: none; }
-    .modal-content { border: 1px solid var(--primary-gold); width: 100%; max-width: 1000px; height: 85vh; border-radius: 0; padding: 50px; }
-    .modal-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
-    .qty-row { flex-direction: row; }
-    .qty-row .qty-selector { width: auto; }
-    .qty-row .btn { width: auto; }
-    .reviews-section { grid-column: span 2; }
-    
-    .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; }
-    .footer-bottom { flex-direction: row; justify-content: space-between; text-align: right; }
+.dish-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.dish-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 10px; }
+.dish-header h3 { font-size: 1.25rem; font-weight: 800; color: var(--accent-cream); }
+.dish-price { color: var(--accent-caramel); font-weight: 900; font-size: 1.15rem; white-space: nowrap; }
+.dish-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px; flex: 1; }
+.btn-order {
+    background: transparent; border: 1px solid rgba(192, 138, 91, 0.3);
+    color: var(--accent-cream); padding: 12px; border-radius: 12px;
+    font-family: var(--font-primary); font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: var(--transition-cinema);
+}
+.glass-glow-card:hover .btn-order {
+    background: var(--accent-caramel); color: var(--bg-smoke); border-color: var(--accent-caramel);
 }
 
-/* بهینه‌سازی و جابجایی سرچ در بریک‌پوینت موبایل */
-@media (max-width: 768px) {
-    .header .search-box { display: none; }
-    .mobile-search-container { display: block; }
-    .search-box.mobile-search { width: 100%; }
-    .nav-menu {
-        position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100vh;
-        background-color: #0c0c0c; border-left: 1px solid var(--glass-border);
-        flex-direction: column; padding: 80px 25px; transition: var(--transition-smooth); z-index: 120; gap: 20px;
+/* بخش شاهکارهای سرآشپز (کاروسل اختصاصی) */
+.signature-section { padding: 100px 0; background-color: rgba(14, 14, 14, 0.5); }
+.carousel-container { position: relative; overflow: hidden; padding: 20px 4px; }
+.carousel-track { display: flex; gap: 20px; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+.carousel-item {
+    flex: 0 0 280px; background: var(--bg-espresso); border-radius: 24px; overflow: hidden;
+    box-shadow: var(--shadow-premium); position: relative; height: 380px;
+}
+.carousel-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(75%); transition: var(--transition-cinema); }
+.carousel-item:hover img { transform: scale(1.03); filter: brightness(85%); }
+.carousel-info { position: absolute; bottom: 0; right: 0; width: 100%; padding: 24px; background: linear-gradient(to top, rgba(14,14,14,0.95), transparent); }
+.carousel-info h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+.carousel-info p { color: var(--text-muted); font-size: 0.85rem; }
+
+.carousel-nav { display: flex; justify-content: center; gap: 16px; margin-top: 32px; }
+.nav-arrow {
+    width: 50px; height: 50px; border-radius: 50%; background: var(--bg-espresso);
+    border: 1px solid var(--border-subtle); color: var(--accent-cream); cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    transition: var(--transition-cinema);
+}
+.nav-arrow:hover { background: var(--accent-caramel); color: var(--bg-smoke); border-color: var(--accent-caramel); }
+
+/* بخش فلسفه و اصالت آشپزخانه مینو */
+.philosophy-section { padding: 100px 0; }
+.philosophy-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+.philosophy-desc { color: var(--text-muted); margin-bottom: 32px; text-align: justify; }
+.chef-signature-box { display: flex; align-items: center; gap: 16px; }
+.chef-avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent-caramel); }
+.chef-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.chef-signature-box h4 { font-size: 1.05rem; font-weight: 800; }
+.chef-signature-box p { font-size: 0.85rem; color: var(--accent-caramel); }
+
+.visual-wrapper { position: relative; border-radius: 28px; overflow: hidden; height: 320px; box-shadow: var(--shadow-premium); }
+.visual-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.floating-badge-experience {
+    position: absolute; bottom: 24px; right: 24px; left: 24px;
+    background: rgba(27, 18, 14, 0.85); backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-subtle);
+    padding: 16px 24px; border-radius: 16px; display: flex; align-items: center; gap: 16px;
+}
+.floating-badge-experience .num { font-size: 2.2rem; font-weight: 900; color: var(--accent-gold); line-height: 1; }
+.floating-badge-experience .lbl { font-size: 0.85rem; font-weight: 700; color: var(--accent-cream); }
+
+/* فریم پیشرفته رزرواسیون VIP */
+.booking-section { padding: 100px 0; background: radial-gradient(circle at center, #231813 0%, var(--bg-smoke) 70%); }
+.glass-booking-card {
+    background: rgba(14, 14, 14, 0.6); backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border-subtle);
+    padding: 32px 20px; border-radius: 32px; box-shadow: var(--shadow-premium);
+}
+.booking-header { text-align: center; margin-bottom: 32px; }
+.booking-header h2 { font-size: 1.8rem; font-weight: 900; margin-top: 6px; margin-bottom: 12px; }
+.booking-header p { color: var(--text-muted); font-size: 0.9rem; }
+
+.form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 0.85rem; font-weight: 700; color: var(--accent-cream); }
+.input-wrapper { position: relative; display: flex; align-items: center; }
+.input-wrapper i { position: absolute; right: 16px; color: var(--accent-caramel); font-size: 1.05rem; pointer-events: none; }
+.input-wrapper input, .input-wrapper select {
+    width: 100%; background: #17100D; border: 1px solid rgba(192, 138, 91, 0.1);
+    padding: 14px 44px 14px 16px; border-radius: 12px; color: var(--accent-cream);
+    font-family: var(--font-primary); font-size: 0.95rem; outline: none;
+    transition: var(--transition-cinema);
+}
+.input-wrapper input:focus, .input-wrapper select:focus {
+    border-color: var(--accent-caramel); background: #231813;
+    box-shadow: 0 0 15px rgba(192, 138, 91, 0.1);
+}
+
+/* بخش نظرات کارشناسان طعم */
+.testimonials-section { padding: 100px 0; }
+.stack-wrapper { position: relative; margin-top: 32px; }
+.testi-card {
+    background: var(--bg-espresso); border: 1px solid var(--border-subtle);
+    padding: 32px 24px; border-radius: 24px; box-shadow: var(--shadow-premium);
+}
+.rating-stars { color: var(--accent-gold); font-size: 0.85rem; margin-bottom: 16px; }
+.testi-text { font-size: 1.05rem; font-style: italic; color: var(--accent-cream); line-height: 1.8; margin-bottom: 20px; }
+.testi-user { font-size: 0.85rem; font-weight: 700; color: var(--accent-caramel); display: block; }
+
+/* بخش موقعیت مکانی ماتریکس */
+.location-section { padding: 100px 0; }
+.location-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+.map-placeholder { height: 300px; border-radius: 28px; overflow: hidden; border: 1px solid var(--border-subtle); }
+.dark-map-ui {
+    width: 100%; height: 100%; background: #130D0B; display: flex;
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px; text-align: center; color: var(--text-muted); gap: 16px;
+}
+.map-pin {
+    font-size: 2.5rem; color: var(--accent-caramel);
+    animation: bouncePin 2s infinite ease-in-out;
+}
+@keyframes bouncePin { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.location-info-side { display: flex; flex-direction: column; justify-content: center; }
+.address-text { font-size: 1.1rem; font-weight: 600; margin-bottom: 24px; display: flex; gap: 12px; align-items: flex-start; }
+.working-hours-box { background: var(--bg-espresso); border-radius: 20px; padding: 24px; margin-bottom: 32px; border: 1px solid var(--border-subtle); }
+.working-hours-box h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 16px; }
+.hours-row { display: flex; justify-content: space-between; font-size: 0.9rem; padding: 8px 0; border-bottom: 1px solid rgba(192, 138, 91, 0.05); }
+.hours-row:last-child { border-bottom: none; }
+
+/* دکمه‌های چسبان و شناور پایین (موبایل بهینه) */
+.sticky-action-bar {
+    position: fixed; bottom: 0; left: 0; width: 100%; height: 65px;
+    display: flex; z-index: 999; box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+}
+.sticky-btn {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    gap: 10px; color: var(--bg-smoke); text-decoration: none; font-weight: 800; font-size: 0.9rem;
+}
+.whatsapp-color { background-color: #25D366; color: #fff; }
+.reserve-color { background-color: var(--accent-caramel); color: var(--bg-smoke); }
+.sticky-lbl { display: inline; }
+
+/* فوتر باشکوه رستوران */
+.luxury-footer { background: #080504; border-top: 1px solid var(--border-subtle); padding: 60px 0 30px; }
+.footer-layout { display: grid; grid-template-columns: 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(192, 138, 91, 0.05); }
+.footer-brand-column h3 { font-size: 1.6rem; font-weight: 900; color: var(--accent-cream); margin-bottom: 16px; }
+.footer-brand-column p { color: var(--text-muted); font-size: 0.9rem; max-width: 320px; margin-bottom: 20px; }
+.social-medias { display: flex; gap: 16px; }
+.social-medias a { color: var(--accent-caramel); font-size: 1.2rem; transition: var(--transition-cinema); }
+.social-medias a:hover { color: var(--accent-cream); transform: translateY(-3px); }
+
+.footer-links-column h4, .footer-contact-column h4 { font-size: 1.05rem; font-weight: 800; color: var(--accent-caramel); margin-bottom: 20px; }
+.footer-links-column ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-links-column a { text-decoration: none; color: var(--accent-cream); font-size: 0.9rem; transition: var(--transition-cinema); }
+.footer-links-column a:hover { color: var(--accent-caramel); padding-right: 4px; }
+.footer-contact-column p { font-size: 0.9rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+
+.footer-bottom { padding-top: 24px; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+
+/* کلاس انیمیشن آشکارسازی اسکرول */
+.scroll-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+
+/* ==========================================================================
+   مدیریت رسپانسیو کاملاً بهینه‌سازی شده برای تمام ابعاد و پلتفرم‌ها
+   ========================================================================== */
+@media (min-width: 425px) {
+    .hero-cta-group { flex-direction: row; }
+    .hero-cta-group .btn { flex: 1; }
+}
+
+@media (min-width: 768px) {
+    body { padding-bottom: 0; } /* حذف فضای خالی پایین در دسکتاپ */
+    .sticky-action-bar {
+        position: fixed; bottom: 30px; left: 30px; width: auto; height: auto;
+        flex-direction: column; gap: 12px; background: transparent; box-shadow: none;
     }
-    .nav-menu.active { right: 0; }
+    .sticky-btn {
+        width: 55px; height: 55px; border-radius: 50%; box-shadow: var(--shadow-premium);
+    }
+    .sticky-lbl { display: none; } /* پنهان کردن متن و نمایش آیکونی در دسکتاپ */
+    .whatsapp-color { color: #fff; }
+
+    .desktop-only { display: inline-flex; }
+    .menu-hamburger { display: none; }
+    .nav-container { position: static; width: auto; height: auto; background: transparent; padding: 0; }
+    .nav-menu { flex-direction: row; gap: 24px; }
+    .nav-link { font-size: 0.95rem; }
+    .nav-link:hover, .nav-link.active { padding-right: 0; border-bottom: 1px solid var(--accent-caramel); }
+
+    .hero-cta-group .btn { flex: initial; }
+    .dishes-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .carousel-item { flex: 0 0 340px; height: 420px; }
+    .philosophy-grid { grid-template-columns: 1.1fr 0.9fr; gap: 48px; }
+    .visual-wrapper { height: 400px; }
+    .form-grid { grid-template-columns: repeat(2, 1fr); }
+    .full-width { grid-column: span 2; }
+    .location-grid { grid-template-columns: 1.1fr 0.9fr; gap: 48px; }
+    .map-placeholder { height: auto; min-height: 380px; }
+    .footer-layout { grid-template-columns: 1.5fr 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+    .nav-menu { gap: 36px; }
+    .dishes-grid { grid-template-columns: repeat(3, 1fr); }
+    .carousel-item { flex: 0 0 380px; height: 460px; }
 }
