@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AUREUM | تلاقی هنر دست و فناوری جاویدان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="loader-container" id="loader">
+        <div class="loader-logo">AUREUM</div>
+        <div class="loader-subtitle">خلق اصالت، فراتر از زمان</div>
+        <div class="loader-bar"></div>
+    </div>
+
+    <header class="header">
+        <div class="header-container container">
+            <div class="mobile-toggle" id="mobileToggle" aria-label="منو">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <a href="#" class="logo">AUREUM</a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link active">رونمایی اصلی</a>
+                <a href="#categories" class="nav-link">مجموعه‌ها</a>
+                <a href="#products" class="nav-link">نمایشگاه آثار</a>
+                <a href="#newsletter" class="nav-link">محفل خصوصی</a>
+            </nav>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="جستجو در میان شاهکارها...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <div class="header-actions">
+                <div class="action-item" id="wishlistBtn" title="صندوق علاقه‌مندی‌ها">
+                    <i class="far fa-heart"></i>
+                    <span class="badge" id="wishlistCount">0</span>
+                </div>
+                <div class="action-item" id="cartToggleBtn" title="سبد سفارشات خاص">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-search-container container">
+            <div class="search-box mobile-search">
+                <input type="text" id="mobileSearchInput" placeholder="جستجو در میان شاهکارها...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <span class="hero-subtitle">میراث کمال در دستان شما</span>
+                <h1 class="hero-title">اوروم تایتان پرو<br><span class="gold-text">نسخه امپریال</span></h1>
+                <p class="hero-description">ساخته‌شده از تیتانیوم گرید هوافضا و روکش طلای ۲۴ عیار. این یک ابزار نیست؛ بیانیه‌ای جاودان از قدرت، پرستیژ و تفکر متمایز شماست.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">مشاهده گالری انحصاری</a>
+                    <a href="#newsletter" class="btn btn-secondary">مشاوره اختصاصی</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories" id="categories">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">دسته‌بندی‌ها</span>
+                    <h2 class="section-title">مجموعه‌های برگزیده</h2>
+                    <div class="accent-line"></div>
+                </div>
+                <div class="categories-slider-wrapper">
+                    <div class="categories-grid">
+                        <div class="category-card active" data-category="all">
+                            <i class="fas fa-border-all"></i>
+                            <span>همه آثار</span>
+                        </div>
+                        <div class="category-card" data-category="smartphones">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>تلفن‌های متمایز</span>
+                        </div>
+                        <div class="category-card" data-category="watches">
+                            <i class="fas fa-clock"></i>
+                            <span>زمان‌سنج‌ها</span>
+                        </div>
+                        <div class="category-card" data-category="headphones">
+                            <i class="fas fa-headphones"></i>
+                            <span>آکوستیک و صدا</span>
+                        </div>
+                        <div class="category-card" data-category="accessories">
+                            <i class="fas fa-bolt"></i>
+                            <span>اکسسوری‌های لوکس</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="products" id="products">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">پورتفولیو</span>
+                    <h2 class="section-title">آثار خلق‌شده دست‌دوز</h2>
+                    <div class="accent-line"></div>
+                </div>
+                <div class="products-grid" id="productsGrid">
+                    </div>
+            </div>
+        </section>
+
+        <section class="newsletter" id="newsletter">
+            <div class="newsletter-content container">
+                <span class="hero-subtitle">عضویت VIP</span>
+                <h2>به کلوپ خصوصی سرمایه‌گذاران بپیوندید</h2>
+                <p>برای دریافت دعوت‌نامه‌های شخصی رونمایی از نسخه‌های انحصاری لیمیتد ادیشن (Limited Edition)، ایمیل ممتاز خود را ثبت کنید.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="ایمیل تجاری یا شخصی خود را وارد کنید..." required>
+                    <button type="submit" class="btn btn-primary">درخواست رزرو دعوت‌نامه</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div class="mobile-sticky-actions">
+        <a href="#products" class="sticky-cta-btn"><i class="fas fa-gem"></i> تصاحب انحصاری شاهکارها</a>
+        <a href="https://wa.me/989120000000" target="_blank" class="sticky-whatsapp-btn" aria-label="ارتباط در واتس‌اپ">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3>سفارشات در حال بررسی</h3>
+            <i class="fas fa-times close-cart" id="cartCloseBtn"></i>
+        </div>
+        <div class="cart-items" id="cartItemsContainer"></div>
+        <div class="cart-drawer-footer">
+            <div class="cart-total">
+                <span>برآورد کل سرمایه‌گذاری:</span>
+                <span id="cartSubtotal">۰ تومان</span>
+            </div>
+            <button class="btn btn-primary checkout-btn" id="checkoutBtn">انتقال به درگاه امن شتاب</button>
+        </div>
+    </div>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <i class="fas fa-times modal-close" id="modalCloseBtn"></i>
+            <div class="modal-grid" id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container container">
+            <div class="footer-col">
+                <span class="logo">AUREUM</span>
+                <p class="footer-about">پیشرو در طراحی اکوسیستم‌های دیجیتال فوقِ لوکس. هر اثر هنر دستِ مهندسان برتر و طراحان خلاقی است که فناوری را به مثابه یک جواهر می‌نگرند.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="بیهنس"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>دسترسی سریع</h3>
+                <ul class="footer-links">
+                    <li><a href="#hero">رونمایی اصلی</a></li>
+                    <li><a href="#categories">کالکشن‌ها</a></li>
+                    <li><a href="#products">نمایشگاه آثار</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>خدمات انحصاری</h3>
+                <ul class="footer-links">
+                    <li><a href="#">کنسیرژ شخصی ۲۴/۷</a></li>
+                    <li><a href="#">تحویل اختصاصی با محافظ</a></li>
+                    <li><a href="#">گارانتی پلاتینیوم مادام‌العمر</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>عمارت مرکزی اوروم</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> تهران، الهیه، برج مینیاتور، واحد VIP</li>
+                    <li><i class="fas fa-phone-alt"></i> ۰۲۱-۲۲۰۰AUREUM</li>
+                    <li><i class="fas fa-envelope"></i> concierge@aureum.luxury</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; ۲۰۲۶ استودیو طراحی لوکس اوروم. تمامی حقوق محفوظ و توسعه یافته برای پورتفولیو ارشد.</p>
+            <p>کیفیت و کمال، مرز نمی‌شناسد.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
